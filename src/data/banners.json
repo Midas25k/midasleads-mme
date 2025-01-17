@@ -1,0 +1,136 @@
+{
+    "index": {
+        "id": "bi-1",
+        "dark_background": false,
+        "title": "Fibra 300Mb + Móvil 10GB",
+        "title_2": "Llamadas ilimitadas + TV",
+        "title_3": "Gratis smartwatch",
+        "img": "/img/banner-index.webp",
+        "img_2": "/img/banner-index.webp",
+        "img_3": "/img/banner-index.png",
+        "img_4": "/img/banner-index.webp",
+        "landline": {
+            "internet": "300 Mbps",
+            "telephone": "Fijo con llamadas ilimitadas a fijos y móviles",
+            "router": "Router wifi e instalación gratis"
+        },
+        "mobile": {
+            "description": "40GB y min ilimitados (5G)",
+            "speed": null,
+            "minutes": null,
+            "roaming": "Roaming incluido en Europa"
+        },
+        "tv": null,
+        "price_text": "3 meses, luego:",
+        "prices": {
+            "uno": [
+                "26",
+                "<strong>,00€/mes</strong> Sin IVA"
+            ],
+            "dos": [
+                "34",
+                ",00€/mes"
+            ]
+        },
+        "is_online": false,
+        "have_permanence": true,
+        "have_device": false,
+        "is_duo_or_trio": false
+    },
+    "fibra_movil": {
+        "id": "bfm-1",
+        "dark_background": false,
+        "title": "Fibra 600Mb + Móvil 60GB",
+        "title_2": "Fibra 600Mb + Móvil 60GB",
+        "img": "/img/banner-fibra-movil.webp",
+        "img_2": "/img/banner-fibra-movil.webp",
+        "landline": {
+            "internet": "600 Mbps",
+            "telephone": "Fijo con llamadas ilimitadas a fijos y móviles",
+            "router": "Router wifi e instalación gratis"
+        },
+        "mobile": {
+            "description": "60GB y min ilimitados (5G)",
+            "speed": null,
+            "minutes": null,
+            "roaming": "Roaming incluido en Europa"
+        },
+        "tv": null,
+        "price_text": "3 meses, luego:",
+        "prices": {
+            "uno": [
+                "41",
+                "<strong>,00€/mes</strong> Sin IVA"
+            ],
+            "dos": [
+                "49",
+                ",00€/mes"
+            ]
+        },
+        "is_online": false,
+        "have_permanence": true,
+        "have_device": false,
+        "is_duo_or_trio": false
+    },
+    "fibra": {
+        "id": "bf-1",
+        "dark_background": false,
+        "title": "Fibra 1Gb + Fijo",
+        "title_2": "Fibra 1Gb",
+        "img": "/img/banner-fibra.webp",
+        "img_2": "/img/banner-fibra.webp",
+        "landline": {
+            "internet": "1 Gbps",
+            "telephone": "Fijo con llamadas ilimitadas a fijos y móviles",
+            "router": "Router wifi e instalación gratis"
+        },
+        "mobile": null,
+        "tv": null,
+        "price_text": "Después de promos:",
+        "prices": {
+            "uno": [
+                "16",
+                "<strong>,52€/mes</strong> Sin IVA"
+            ],
+            "dos": [
+                "34",
+                ",70€/mes"
+            ]
+        },
+        "is_online": false,
+        "have_permanence": true,
+        "have_device": false,
+        "is_duo_or_trio": false
+    },
+    "movil": {
+        "id": "bm-1",
+        "dark_background": false,
+        "title": "Móvil 80GB y min ilimitados",
+        "title_2": "Móvil 80GB",
+        "img": "/img/banner-movil.webp",
+        "img_2": "/img/banner-movil.webp",
+        "landline": null,
+        "mobile": {
+            "description": "80GB de Datos",
+            "speed": "máxima ⚡︎⚡︎⚡︎",
+            "minutes": "Min ilimitados",
+            "roaming": "Roaming incluido en Europa"
+        },
+        "tv": null,
+        "price_text": "Después de promos:",
+        "prices": {
+            "uno": [
+                "9",
+                "<strong>,00€/mes</strong> Sin IVA"
+            ],
+            "dos": [
+                "18",
+                ",00€/mes"
+            ]
+        },
+        "is_online": false,
+        "have_permanence": false,
+        "have_device": false,
+        "is_duo_or_trio": false
+    }
+}

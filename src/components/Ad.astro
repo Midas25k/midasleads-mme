@@ -1,0 +1,22 @@
+---
+const { ad } = Astro.props;
+---
+
+<div class="w-full bg-white border-2 border-gray-200 rounded-md drop-shadow-lg flex flex-col">
+    <div class="flex-grow">
+        <img class="rounded-t-lg w-full" src={ad.img} alt="" />
+        <div class="p-6">
+            <div class="flex items-end mb-3 font-anton">
+                <span class="text-xl sm:text-2xl">{ad.title}</span>
+            </div>
+            <span class="text-sm sm:text-base">
+                {ad.description}
+            </span>
+        </div>
+    </div>
+    <div class="px-6 pb-6 flex justify-center space-x-4">
+        <button id={"button-modal-"+ad.id} class="bg-yellow_mm hover:bg-yellow_mm_hover text-base font-bold px-5 py-3 rounded-md" type="button">
+            {ad.button_text}
+        </button>
+    </div>
+</div>

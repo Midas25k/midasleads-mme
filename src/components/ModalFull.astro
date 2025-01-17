@@ -1,0 +1,225 @@
+---
+const { data_modal } = Astro.props;
+
+import Phone from 'astro-heroicons/outline/Phone.astro';
+
+import global_json from '../data/global.json';
+
+let global = global_json;
+
+let price = " (" + data_modal.prices.uno[0] + data_modal.prices.uno[1] + ")";
+let product = data_modal.title_2 && data_modal.title_2 + price || data_modal.title + price;
+---
+
+<modal-full data-modal={JSON.stringify(data_modal)}>
+    <div id={"modal-"+data_modal.id} class="hidden opacity-0 transition-opacity duration-200 fixed flex inset-0 bg-black bg-opacity-50 items-center justify-center z-10">
+        <div class="relative p-4 w-full max-w-2xl max-h-full overflow-y-auto">
+            <div class="relative bg-white rounded-lg shadow space-y-4 p-6">
+                <div class="flex rounded-t">
+                    <div class="flex w-full">
+                        <div class="flex items-center rtl:space-x-reverse space-x-2">
+                            <img src="/img/logo.svg" class="h-8 sm:h-10 md:h-12" alt="MasMovil Negocios Logo" />
+                            <div class="inline-block w-0.5 self-stretch bg-zinc-950"></div>
+                            <span class="grid justify-items-center text-sm md:text-base bg-zinc-950 text-yellow_mm px-2 py-1">
+                                <span class="text-sm font-bold">Distribuidor</span>
+                                <span class="text-sm font-bold">Autorizado</span>
+                            </span>
+                        </div>
+                        <button type="button" id={"close-modal-"+data_modal.id} class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="space-y-2 pt-6">
+                    <p class="text-xl text-center">
+                        Llámanos al
+                    </p>
+                    <div class="flex justify-center w-full">
+                        <a href={"tel:"+global.phone} class="bg-green_mm hover:bg-green_mm_hover text-white text-base text-center font-bold px-5 py-3 drop-shadow-lg rounded-md flex space-x-2 justify-center" type="button">
+                            <Phone class="w-6 h-6 flex-shrink-0"/> 
+                            <span class="whitespace-nowrap">
+                                {global.phone.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                            </span>
+                        </a>
+                    </div>
+                    <p class="text-xl text-center py-4">
+                        O Déjanos tu información
+                    </p>
+                    <form id={"form-"+data_modal.id} class="mx-auto pt-4 text-sm">
+                        <input type="text" name="product" id={"product_"+data_modal.id} class="hidden" value={product}/>
+                        <!-- <div class="grid md:grid-cols-2 md:gap-6">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="text" name="first_name" id={"first_name_"+data_modal.id} class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green_mm peer" placeholder=" " required />
+                                <label for={"first_name_"+data_modal.id} class="peer-focus:font-medium absolute text-gray-700 duration-300 transform -translate-y-6 scale-90 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green_mm_hover peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-6">¿Cómo te llamas? *</label>
+                            </div>
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="text" name="last_name" id={"last_name_"+data_modal.id} class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green_mm peer" placeholder=" " required />
+                                <label for={"last_name_"+data_modal.id} class="peer-focus:font-medium absolute text-gray-700 duration-300 transform -translate-y-6 scale-90 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green_mm_hover peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-6">¿Cuales son tus apellidos? *</label>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 md:gap-6">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="date" name="date" id={"date_"+data_modal.id} class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green_mm peer" placeholder=" " required />
+                                <label for={"date_"+data_modal.id} class="peer-focus:font-medium absolute text-gray-700 duration-300 transform -translate-y-6 scale-90 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green_mm_hover peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-6">¿Cuando naciste? *</label>
+                            </div>
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="text" name="document" id={"document_"+data_modal.id} class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green_mm peer" placeholder=" " required />
+                                <label for={"document_"+data_modal.id} class="peer-focus:font-medium absolute text-gray-700 duration-300 transform -translate-y-6 scale-90 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green_mm_hover peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-6">Dinos tu DNI o NIE *</label>
+                            </div>
+                        </div> -->
+                        <div class="grid md:grid-cols md:gap-6">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="number" name="phone" id={"phone_"+data_modal.id} class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green_mm peer" placeholder=" " required />
+                                <label for={"phone_"+data_modal.id} class="peer-focus:font-medium absolute text-gray-700 duration-300 transform -translate-y-6 scale-90 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green_mm_hover peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-6">¿Cuál es tu número de teléfono? *</label>
+                            </div>
+                            <!-- <div class="relative z-0 w-full mb-5 group">
+                                <select name="operator" id={"operator_"+data_modal.id} class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green_mm peer" required>
+                                    <option selected>¿Cuál es tu operadora? *</option>
+                                    {global.operators.map(operator => (
+                                        <option value={operator}>{operator}</option>
+                                    ))}
+                                </select>
+                            </div> -->
+                        </div>
+                        <!-- <div class="grid md:gap-6">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="email" name="email" id={"email_"+data_modal.id} class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green_mm peer" placeholder=" " />
+                                <label for={"email_"+data_modal.id} class="peer-focus:font-medium absolute text-gray-700 duration-300 transform -translate-y-6 scale-90 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-red:text-blue-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-6">¿Cúal es tu email? (opcional)</label>
+                            </div>
+                        </div> -->
+                        <!-- {data_modal.landline && (
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="text" name="address" id={"address_"+data_modal.id} class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green_mm peer" placeholder=" " />
+                                <label for={"address_"+data_modal.id} class="peer-focus:font-medium absolute text-gray-700 duration-300 transform -translate-y-6 scale-90 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green_mm_hover peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-6">¿Cual es tu dirección? (opcional)</label>
+                            </div>
+                        )} -->
+                        <div class="flex items-start mb-5">
+                            <div class="flex items-center h-5">
+                                <input id={"terms_"+data_modal.id} type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required />
+                            </div>
+                            <label for={"terms_"+data_modal.id} class="ms-2 font-medium text-gray-900">*He leído y acepto la <a target="_blank" href="/politica-de-privacidad" class="text-lime-700 font-bold hover:underline">política de privacidad</a></label>
+                        </div>
+                        <!-- <div class="flex items-start mb-5">
+                            <div class="flex items-center h-5">
+                                <input id={"comm_"+data_modal.id} type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required />
+                            </div>
+                            <label for={"comm_"+data_modal.id} class="ms-2 font-medium text-gray-900">Acepto recibir comunicaciones comerciales de MasMovil Negocios</label>
+                        </div> -->
+                        <div class="flex justify-center rounded-b">
+                            <button type="submit" class="tracking-widest bg-green_mm hover:bg-green_mm_hover text-white text-base text-center font-bold px-5 py-3 drop-shadow-lg rounded-md flex space-x-2 justify-center">
+                                <span>
+                                    LLAMADME GRATIS
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</modal-full>
+
+<script>
+    class Modal extends HTMLElement {
+        constructor() {
+            super();
+            
+            const data_modal = JSON.parse(this.dataset.modal);
+
+            const modal = document.getElementById('modal-'+data_modal.id);
+            const buttonModal = document.getElementById('button-modal-'+data_modal.id);
+            const closeModal = document.getElementById('close-modal-'+data_modal.id);
+            const form = document.getElementById('form-'+data_modal.id) as HTMLFormElement;
+            const thanks = document.getElementsByClassName('thanks')[0];
+
+            buttonModal.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modal.classList.add('opacity-100');
+                }, 10);
+            });
+
+            closeModal.addEventListener('click', () => {
+                setTimeout(() => {
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                    }, 500);
+                    modal.classList.remove('opacity-100');
+                    modal.classList.add('opacity-0');
+                }, 10);
+                document.body.classList.remove('overflow-hidden');
+            });
+
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    setTimeout(() => {
+                        setTimeout(() => {
+                            modal.classList.add('hidden');
+                        }, 500);
+                        modal.classList.remove('opacity-100');
+                        modal.classList.add('opacity-0');
+                    }, 10);
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+
+                fetch(`${import.meta.env.PUBLIC_API_URL}/api/main/lead/create`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        "phone": data.phone,
+                        "operator": data.operator,
+                        "segment": "",
+                        "doc": data.document,
+                        "full_name": null,
+                        "full_address": data.address,
+                        "email": data.email,
+                        "order": data.product,
+                        "campaign_id": import.meta.env.PUBLIC_CAMPAIGN_ID
+                    })
+                }).then(response => {
+                    if (response.status === 201) {
+                        modal.classList.add('hidden');
+
+                        form.reset();
+
+                        thanks.classList.remove('hidden');
+                        document.body.classList.add('overflow-hidden');
+                        setTimeout(() => {
+                            thanks.classList.remove('opacity-0');
+                            thanks.classList.add('opacity-100');
+                        }, 10);
+                        setTimeout(() => {
+                            setTimeout(() => {
+                                thanks.classList.add('hidden');
+                            }, 500);
+                            thanks.classList.remove('opacity-100');
+                            thanks.classList.add('opacity-0');
+                            document.body.classList.remove('overflow-hidden');
+                        }, 3000);
+                    }
+
+                    return response.json();
+                }).then(data => {
+                    console.log(data.detail);
+                });
+            });
+        }
+    }
+  
+    customElements.define('modal-full', Modal);
+</script>

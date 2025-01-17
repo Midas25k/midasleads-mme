@@ -1,0 +1,128 @@
+---
+const { title } = Astro.props;
+
+import Header from '../components/Header.astro';
+import Coverage from '../components/Coverage.astro';
+import BubbleLlamame from '../components/BubbleLlamame.astro';
+import Whatsapp from '../components/Whatsapp.astro';
+import Thanks from '../components/Thanks.astro';
+import SidePanel from '../components/SidePanel.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+		<title>{title && title + " - MasMovil Negocios Distribuidor Autorizado" || "MasMovil Negocios Distribuidor Autorizado"}</title>
+		<meta name="description" content="Descubre MasMovil Negocios y su amplia oferta de servicios que te ofrece tener fibra y móvil en el mismo plan." />
+		<link rel="canonical" href="https://tunuevatelco.com/">
+		<meta property="og:locale" content="es_ES">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content={title && title + " - MasMovil Negocios Distribuidor Autorizado" || "MasMovil Negocios Distribuidor Autorizado"}>
+		<meta property="og:description" content="Descubre MasMovil Negocios y su amplia oferta de servicios que te ofrece tener fibra y móvil en el mismo plan.">
+		<meta property="og:url" content="https://tunuevatelco.com/">
+		<meta property="og:site_name" content="MasMovil Negocios Distribuidor Autorizado">
+		<meta property="article:modified_time" content="2024-08-22T00:00:00+00:00">
+		<meta property="og:image" content="/img/logo.png">
+		<link rel="icon" href="/img/favicon.ico">
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Google tag (gtag.js) ANALYTICS -->
+		<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GM2LT1NCG"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-6GM2LT1NCG');
+		</script> -->
+
+		<!-- Google Tag Manager -->
+		<!-- <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-PV7L8GCL');</script> -->
+		<!-- End Google Tag Manager -->
+
+		<!-- Google tag (gtag.js) ADS -->
+		<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16686353580"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'AW-16686353580');
+		</script> -->
+
+		<!-- Event snippet for Vista de una página conversion page -->
+		<!-- <script is:inline>
+			gtag('event', 'conversion', {
+				'send_to': 'AW-16686353580/MdnOCL2rzM4ZEKyZ1pQ-',
+				'value': 1.0,
+				'currency': 'PEN'
+			});
+		</script> -->
+	</head>
+	<body class="">
+		<Header />
+		<Coverage />
+		<slot />
+		<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+		<BubbleLlamame />
+		<Whatsapp />
+		<Thanks />
+		<CookieBanner />
+		<!-- Google Tag Manager (noscript) -->
+		<!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PV7L8GCL"
+			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+		<!-- End Google Tag Manager (noscript) -->
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+
+	@font-face {
+		font-family: Anton;
+		src: url(/fonts/AntonRg.woff2) format('woff2');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: Poppins;
+		src: url(/fonts/PoppinsRg.ttf) format('truetype');
+	}
+
+	html {
+		font-family: Poppins;
+		src: url(/fonts/PoppinsRg.ttf) format('truetype');
+	}
+	
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+</style>

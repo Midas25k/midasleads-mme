@@ -1,0 +1,25 @@
+---
+const { notice } = Astro.props;
+
+import ModalSmall from './ModalSmall.astro';
+---
+
+<div class="bg-yellow_mm mt-6">
+    <div class="max-w-screen-xl mx-auto">
+        <div class="flex flex-col items-center px-8 py-8 space-y-4 text-center text-gray-900">
+            <span class="font-anton text-xl sm:text-2xl">
+                {notice.title}
+            </span>
+            <span class="flex flex-col text-start py-4">
+                {notice.description.map((description) => (
+                    <span class="text-sm sm:text-base" set:html={description}></span>
+                ))}
+            </span>
+            <button id={"button-modal-"+notice.id} class="bg-green_mm hover:bg-green_mm_hover text-white text-base font-bold px-5 py-3 rounded-md" type="button">
+                {notice.button_text}
+            </button>
+        </div>
+    </div>
+</div>
+
+<ModalSmall data_modal={notice} />

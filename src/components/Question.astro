@@ -1,0 +1,77 @@
+---
+---
+
+<div class="max-w-screen-xl mx-auto">
+    <div class="mt-6 px-8">
+        <div class="w-full divide-y divide-slate-300 overflow-hidden rounded-xl border border-slate-300 bg-zinc-100/40 text-slate-700">
+            <div x-data="{ isExpanded: false }" class="divide-y divide-slate-300">
+                <button id="controlsAccordionItemOne" type="button" class="flex w-full items-center justify-between gap-4 bg-gradient-to-r from-zinc-900 to-zinc-800 text-white p-4 text-left underline-offset-2 text-base" aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded" :class="isExpanded ? 'text-onSurfaceStrong dark:text-onSurfaceDarkStrong font-bold'  : 'text-onSurface dark:text-onSurfaceDark font-medium'" :aria-expanded="isExpanded ? 'true' : 'false'">
+                    ¿Qué ofrece MasMovil Negocios a las PYMEs?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </button>
+                <div x-cloak x-show="isExpanded" id="accordionItemOne" role="region" aria-labelledby="controlsAccordionItemOne" x-collapse>
+                    <div class="p-4 text-sm sm:text-base text-pretty">
+                        MasMovil Negocios ofrece una solución completa para empresas, que incluye líneas móviles, internet de fibra óptica, y servicios avanzados como centralitas virtuales y conectividad VPN. Estos planes están diseñados para adaptarse a las necesidades específicas de las PYMEs, permitiendo elegir la cantidad de líneas, velocidad de internet y soluciones adicionales. Los planes también incluyen tarifas competitivas que ayudan a reducir costos operativos. Además, se ofrece soporte técnico especializado para empresas, lo que garantiza un servicio ágil y eficiente. Esta combinación hace que MasMovil sea una opción atractiva para empresas que buscan flexibilidad.
+                    </div>
+                </div>
+            </div>
+            <div x-data="{ isExpanded: false }" class="divide-y divide-slate-300">
+                <button id="controlsAccordionItemTwo" type="button" class="flex w-full items-center justify-between gap-4 bg-gradient-to-r from-zinc-900 to-zinc-800 text-white p-4 text-left underline-offset-2 text-base" aria-controls="accordionItemTwo" @click="isExpanded = ! isExpanded" :class="isExpanded ? 'text-onSurfaceStrong dark:text-onSurfaceDarkStrong font-bold'  : 'text-onSurface dark:text-onSurfaceDark font-medium'" :aria-expanded="isExpanded ? 'true' : 'false'">
+                    ¿Cuál es el beneficio principal de los planes de MasMovil Negocios?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </button>
+                <div x-cloak x-show="isExpanded" id="accordionItemTwo" role="region" aria-labelledby="controlsAccordionItemTwo" x-collapse>
+                    <div class="p-4 text-sm sm:text-base text-pretty">
+                        El principal beneficio de los planes de MasMovil Negocios es su capacidad de adaptación a las necesidades de cada empresa. Los paquetes permiten combinar distintos servicios como telefonía fija, móvil, y fibra óptica de alta velocidad. Además, estos servicios pueden escalarse según el crecimiento de la empresa, facilitando su gestión a medida que crece. MasMovil también se destaca por ofrecer precios competitivos, permitiendo a las PYMEs optimizar sus presupuestos sin comprometer la calidad del servicio. El soporte especializado para empresas también asegura que los problemas se resuelvan rápidamente, minimizando el tiempo de inactividad.
+                    </div>
+                </div>
+            </div>
+            <div x-data="{ isExpanded: false }" class="divide-y divide-slate-300">
+                <button id="controlsAccordionItemThree" type="button" class="flex w-full items-center justify-between gap-4 bg-gradient-to-r from-zinc-900 to-zinc-800 text-white p-4 text-left underline-offset-2 text-base" aria-controls="accordionItemThree" @click="isExpanded = ! isExpanded" :class="isExpanded ? 'text-onSurfaceStrong dark:text-onSurfaceDarkStrong font-bold'  : 'text-onSurface dark:text-onSurfaceDark font-medium'" :aria-expanded="isExpanded ? 'true' : 'false'">
+                    ¿Qué velocidades de internet ofrecen los planes de MasMovil Negocios?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </button>
+                <div x-cloak x-show="isExpanded" id="accordionItemThree" role="region" aria-labelledby="controlsAccordionItemThree" x-collapse>
+                    <div class="p-4 text-sm sm:text-base text-pretty">
+                        MasMovil Negocios ofrece planes de internet con fibra óptica que alcanzan velocidades de hasta 1 Gbps. Estas velocidades permiten una navegación rápida y estable, ideal para empresas que dependen de una conexión continua y sin interrupciones. Las velocidades varían según el plan, con opciones que se ajustan a empresas pequeñas, medianas y grandes, adaptándose al nivel de tráfico y actividades que requieren conectividad, como videoconferencias, almacenamiento en la nube o aplicaciones empresariales. Con una fibra de alta velocidad, las empresas pueden garantizar que su infraestructura digital funcione sin problemas.
+                    </div>
+                </div>
+            </div>
+            <div x-data="{ isExpanded: false }" class="divide-y divide-slate-300">
+                <button id="controlsAccordionItemThree" type="button" class="flex w-full items-center justify-between gap-4 bg-gradient-to-r from-zinc-900 to-zinc-800 text-white p-4 text-left underline-offset-2 text-base" aria-controls="accordionItemThree" @click="isExpanded = ! isExpanded" :class="isExpanded ? 'text-onSurfaceStrong dark:text-onSurfaceDarkStrong font-bold'  : 'text-onSurface dark:text-onSurfaceDark font-medium'" :aria-expanded="isExpanded ? 'true' : 'false'">
+                    ¿Incluyen los planes soporte técnico especializado?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </button>
+                <div x-cloak x-show="isExpanded" id="accordionItemThree" role="region" aria-labelledby="controlsAccordionItemThree" x-collapse>
+                    <div class="p-4 text-sm sm:text-base text-pretty">
+                        Sí, los planes de MasMovil Negocios incluyen soporte técnico especializado pensado para PYMEs y grandes empresas. Este soporte es priorizado, lo que significa que las incidencias se resuelven de manera rápida para evitar pérdidas de productividad o tiempo de inactividad. Además, el equipo técnico está disponible para realizar configuraciones o solucionar problemas de conectividad y servicios adicionales como las centralitas virtuales. MasMovil entiende que una empresa no puede permitirse largas interrupciones, por lo que la asistencia técnica está diseñada para ser eficiente y efectiva, garantizando una experiencia sin contratiempos.
+                    </div>
+                </div>
+            </div>
+            <div x-data="{ isExpanded: false }" class="divide-y divide-slate-300">
+                <button id="controlsAccordionItemThree" type="button" class="flex w-full items-center justify-between gap-4 bg-gradient-to-r from-zinc-900 to-zinc-800 text-white p-4 text-left underline-offset-2 text-base" aria-controls="accordionItemThree" @click="isExpanded = ! isExpanded" :class="isExpanded ? 'text-onSurfaceStrong dark:text-onSurfaceDarkStrong font-bold'  : 'text-onSurface dark:text-onSurfaceDark font-medium'" :aria-expanded="isExpanded ? 'true' : 'false'">
+                    ¿Qué soluciones tecnológicas ofrece además de telefonía e internet?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </button>
+                <div x-cloak x-show="isExpanded" id="accordionItemThree" role="region" aria-labelledby="controlsAccordionItemThree" x-collapse>
+                    <div class="p-4 text-sm sm:text-base text-pretty">
+                        Además de los servicios de telefonía móvil y fibra óptica, MasMovil Negocios ofrece una amplia gama de soluciones tecnológicas para empresas. Estas incluyen centralitas virtuales, que permiten gestionar llamadas de manera más eficiente, y servicios en la nube que facilitan el almacenamiento y acceso seguro a datos empresariales. También ofrecen conectividad VPN para empresas que necesitan acceso seguro a sus redes internas desde ubicaciones remotas. Estas herramientas permiten a las PYMEs mejorar su eficiencia operativa, facilitando la digitalización y asegurando que puedan competir en un entorno cada vez más tecnológico y globalizado.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>

@@ -1,0 +1,36 @@
+{
+    "index": {
+        "uno": [
+            {
+                "id": "ai-1",
+                "img": "/img/ad-1-index.webp",
+                "title": "Tarifas y servicios para tu negocio",
+                "description": "Ofertas de fibra y móvil con llamadas ilimitadas y bonos de datos. 1 línea EXTRA GRATIS con 3GB de datos y llamadas ilimitadas. Líneas móviles MÁS PRO adicionales con descuento para siempre.",
+                "button_text": "QUIERO SABER MÁS"
+            },
+            {
+                "id": "ai-2",
+                "img": "/img/ad-2-index.webp",
+                "title": "Instalación rápida y sin Interrupciones:",
+                "description": "Nos aseguramos de que recibas tus dispositivos a tiempo. Equipo especializado en provisión a negocios. Sin interrupciones de servicio durante el proceso. No reutilizamos la acometida de fibra anterior",
+                "button_text": "QUIERO SABER MÁS"
+            },
+            {
+                "id": "ai-3",
+                "img": "/img/ad-3-index.webp",
+                "title": "Soporte para nuestros clientes Pro:",
+                "description": "Servicio de atención al cliente especializado. Si tienes un problema, garantizamos una solución más rápida. Asesoramiento en la contratación de tu tarifa.",
+                "button_text": "QUIERO SABER MÁS"
+            },
+            {
+                "id": "ai-4",
+                "img": "/img/ad-4-index.webp",
+                "title": "Ahorra en cada una de tus sedes, hasta en tu casa:",
+                "description": "Hasta 6€ de descuento todos los meses por cada sede. Para siempre mientras mantengas más de una sede. Compatible con otras promociones.",
+                "button_text": "QUIERO SABER MÁS"
+            }
+        ],
+        "dos": [
+        ]
+    }
+}

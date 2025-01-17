@@ -1,0 +1,43 @@
+{
+    "index": {
+        "id": "ni-1",
+        "title": "¿NECESITAS MÁS LÍNEAS MÓVILES?",
+        "title_2": "Más líneas móviles",
+        "description": [
+            "<span class='font-anton text-lg sm:text-xl'>Añádelas desde 4,13€/mes (Sin IVA)</span>",
+            "En MÁSMÓVIL tienes las tarifas móviles que necesitas para llevar a cabo tu trabajo, tanto si tienes una empresa como si trabajas como autónomo profesional. Aprovecha las ventajas de nuestros servicios de telefonía móvil y mantén el contacto profesional que necesitas con clientes, empleados y proveedores."
+        ],
+        "button_text": "HABLA CON UN EXPERTO"
+    },
+    "fibra_movil": {
+        "id": "nfm-1",
+        "title": "EL SERVICIO DE FIBRA Y MÓVIL QUE QUIERES PARA TU NEGOCIO",
+        "title_2": "Fibra y Móvil",
+        "description": [
+            "En MÁSMÓVIL te ofrecemos las tarifas de Fibra y Móvil que necesitas para tu empresa o negocio, con las que navegar con la máxima velocidad y toda la calidad de conexión que deseas.",
+            "Elige tu tarifa de Fibra y Móvil ideal. Hasta 1Gb de fibra óptica para disfrutar de una conexión sin límites y con servicio de telefonía móvil adaptado a tus necesidades ¡y con velocidad 5G!"
+        ],
+        "button_text": "HABLA CON UN EXPERTO"
+    },
+    "fibra": {
+        "id": "nf-1",
+        "title": "LA TARIFA DE FIBRA ÓPTICA QUE NECESITA TU NEGOCIO",
+        "title_2": "Fibra Óptica",
+        "description": [
+            "En MÁSMÓVIL te ofrecemos tarifas de fibra óptica para que disfrutes de la mejor conexión a Internet posible, durante toda la jornada laboral.",
+            "Escoge la tarifa de Internet que mejor se ajuste a tus necesidades, con 500Mb o hasta 1Gb y disfruta de todas las ventajas de nuestra fibra óptica simétrica. Una gran calidad de conexión, para que tu trabajo no sufra interrupciones ni ralentizaciones."
+        ],
+        "button_text": "HABLA CON UN EXPERTO"
+    },
+    "movil": {
+        "id": "nm-1",
+        "title": "¿POR QUÉ CONTRATAR TARIFAS MÓVILES CON MÁSMÓVIL NEGOCIOS?",
+        "title_2": "Tarifas Móviles",
+        "description": [
+            "<span class='font-bold'>SMS Gratis:</span> Hasta 1000 SMS sin costes con nuestras tarifas de móvil para autónomos, ¡Mantén informado a tus clientes!",
+            "<span class='font-bold'>Sin costes extras de datos:</span> Podrás navegar sin preocupaciones. Superado el bono de datos, se baja la velocidad.",
+            "<span class='font-bold'>Llamadas internacionales:</span> Con 100 minutos de llamadas a fijos y móviles internacionales desde tu móvil."
+        ],
+        "button_text": "HABLA CON UN EXPERTO"
+    }
+}

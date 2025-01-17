@@ -1,0 +1,143 @@
+---
+// Importaciones necesarias
+import coverage_json from "../data/coverage.json";
+let coverage = coverage_json.all;
+
+import ModalSmall from "./ModalSmall.astro";
+import Wifi from "astro-heroicons/outline/Wifi.astro";
+---
+
+<!-- Contenedor del header -->
+<div class="bg-yellow_mm m-0 relative">
+  <div
+    class="flex flex-col md:flex-row justify-between items-center py-2 px-4 mx-auto max-w-screen-2xl"
+  >
+    <!-- Título -->
+    <span class="font-bold flex-1 md:flex-initial text-center md:text-left"
+      >{coverage.title}</span
+    >
+
+    <!-- Botón -->
+    <button id={"button-modal-" + coverage.id} class="header-button">
+      <Wifi class="w-6 h-6 flex-shrink-0 text-esmerald" />
+      <span>{coverage.button_text}</span>
+    </button>
+  </div>
+</div>
+
+<!-- Modal -->
+<ModalSmall data_modal={coverage} />
+
+<script>
+  // Inyección de estilos CSS
+  const style = document.createElement("style");
+  style.innerHTML = `
+    /* Contenedor principal del header */
+    .header {
+      background-color: #FFD700;
+      margin: 0;
+      padding: 1rem;
+      position: relative;
+      z-index: 10; /* Asegura que el header esté sobre otros elementos */
+    }
+
+    /* Botón de cobertura */
+    .header-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.25rem 1rem; /* Ajuste de altura del botón */
+  background-color: #FFD700;
+  border: 2px solid #FFD700;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: absolute; /* Asegura la posición relativa al contenedor */
+  top: 50%; /* Centrado verticalmente */
+  transform: translateY(-50%);
+  right: 80px; /* Ajuste más a la izquierda para pantallas grandes */
+}
+
+    /* Hover en el botón */
+    .header-button:hover {
+      background-color: #FFE135;
+    }
+/* Hover */
+.header-button:hover {
+  background-color: #FFE135;
+}
+
+/* Contenedor principal */
+.bg-yellow_mm {
+  position: relative; /* Para que el botón sea relativo a este contenedor */
+}
+
+/* Escritorios grandes */
+@media (min-width: 1440px) {
+  .header-button {
+    right: 50px; /* Mueve el botón más a la derecha */
+  }
+}
+
+
+/* Escritorios pequeños / Laptops */
+@media (max-width: 1280px) {
+  .header-button {
+    right: 310px; /* Ajusta más a la izquierda para laptops */
+  }
+}
+
+/* Ajuste para pantallas medianas */
+@media (max-width: 1024px) {
+  .header-button {
+    right: 10px; /* Reduce el desplazamiento hacia la izquierda */
+    padding: 0.2rem 0.8rem; /* Reduce el tamaño del botón */
+    font-size: 0.9rem; /* Disminuye el tamaño del texto dentro del botón */
+    gap: 0.3rem; /* Reduce la separación entre el ícono y el texto */
+  }
+
+  .header-button span {
+    font-size: 0.85rem; /* Reduce aún más el tamaño del texto del botón */
+  }
+}
+
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+  .header-button {
+    position: relative; /* Cambia la posición para ser relativa al contenedor */
+    margin: 0 auto; /* Centra el botón horizontalmente */
+    right: 0; /* Resetea el valor para evitar desplazamiento excesivo */
+    top: 0;
+    transform: none; /* Resetea el transform para una alineación natural */
+    margin-top: 1rem; /* Agrega algo de espacio superior */
+  }
+}
+
+/* Teléfonos grandes */
+@media (max-width: 640px) {
+  .header-button {
+    right: 0; /* Centra el botón */
+    margin: 0 auto;
+  }
+}
+
+/* Ajuste para teléfonos más pequeños */
+@media (max-width: 480px) {
+  .header-button {
+    position: relative;
+    margin: 0 auto;
+    right: 0; /* Sin desplazamiento adicional */
+    top: 0;
+    transform: none;
+    margin-top: 0.5rem; /* Reduce el espacio superior en pantallas muy pequeñas */
+  }
+}
+
+
+  `;
+  document.head.appendChild(style);
+</script>

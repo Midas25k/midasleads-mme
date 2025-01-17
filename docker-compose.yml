@@ -1,0 +1,6 @@
+services:
+  astro:
+    build: .
+    restart: always
+    ports:
+      - "4321:4321"

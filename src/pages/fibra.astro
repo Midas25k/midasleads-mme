@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Banner from '../components/Banner.astro';
+import Product from '../components/Product.astro';
+import Notice from '../components/Notice.astro';
+import Footer from '../components/Footer.astro';
+
+import banners_json from '../data/banners.json';
+import products_json from '../data/products.json';
+import notices_json from '../data/notices.json';
+
+let banner = banners_json.fibra;
+let products = products_json.fibra;
+let notice = notices_json.fibra;
+---
+
+<Layout title="Fibra óptica al mejor precio">
+	<main>
+		<Banner {banner}/>
+		{products.uno && products.uno.title && (
+			<div class="flex flex-col items-center mx-auto max-w-screen-2xl px-8 py-8 space-y-6">
+				<span class="text-2xl sm:text-3xl text-center font-bold">
+					{products.uno.title}
+				</span>
+				<span class="text-lg text-center">
+					{products.uno.description}
+				</span>
+			</div>
+			<div class="flex flex-wrap justify-center gap-6 mx-auto max-w-screen-2xl px-8">
+				{products.uno.products.map((product) => (
+					<Product {product}/>
+				))}
+			</div>
+		)}
+		{products.dos && products.dos.title && (
+			<div class="flex flex-col items-center mx-auto max-w-screen-2xl px-8 py-8 space-y-6">
+				<span class="text-2xl sm:text-3xl text-center font-bold">
+					{products.dos.title}
+				</span>
+				<span class="text-lg text-center">
+					{products.dos.description}
+				</span>
+			</div>
+			<div class="flex flex-wrap justify-center gap-6 mx-auto max-w-screen-2xl px-8">
+				{products.dos.products.map((product) => (
+					<Product {product}/>
+				))}
+			</div>
+		)}
+		{products.tres && products.tres.title && (
+			<div class="flex flex-col items-center mx-auto max-w-screen-2xl px-8 py-8 space-y-6">
+				<span class="text-2xl sm:text-3xl text-center font-bold">
+					{products.tres.title}
+				</span>
+				<span class="text-lg text-center">
+					{products.tres.description}
+				</span>
+			</div>
+			<div class="flex flex-wrap justify-center gap-6 mx-auto max-w-screen-2xl px-8">
+				{products.tres.products.map((product) => (
+					<Product {product}/>
+				))}
+			</div>
+		)}
+		{notice && (
+			<Notice {notice}/>
+		)}
+		<Footer/>
+	</main>
+</Layout>

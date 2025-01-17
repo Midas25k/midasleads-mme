@@ -1,0 +1,466 @@
+{
+    "index": {
+        "uno": {
+            "title": "Tarifas más vendidas de telefonía móvil y fibra óptica",
+            "description": "¡Precios para siempre porque no te cambiamos la tarifa a los pocos meses!",
+            "products": [
+                {
+                    "id": "pi-1",
+                    "title": "Fibra 300Mb + Móvil 12GB",
+                    "landline": {
+                        "internet": "<strong class='bg-yellow_mm px-2'>300 Mbps</strong>",
+                        "telephone": "Fijo con llamadas <strong class='bg-yellow_mm px-2'>ilimitadas</strong> a fijos y <strong class='bg-yellow_mm px-2'>30</strong> min a móviles",
+                        "router": "Router wifi e instalación gratis"
+                    },
+                    "mobile": {
+                        "description": "<strong class='bg-yellow_mm px-2'>12GB</strong> y min ilimitados (5G)",
+                        "speed": null,
+                        "minutes": null,
+                        "roaming": "Roaming incluido en Europa"
+                    },
+                    "tv": null,
+                    "price_text": null,
+                    "prices": {
+                        "uno": [
+                            "24",
+                            "<strong>,71€/mes</strong> Sin IVA"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": true,
+                    "is_duo_or_trio": false
+                },
+                {
+                    "id": "pi-2",
+                    "title": "Fibra 1Gb + Móvil 60GB",
+                    "landline": {
+                        "internet": "<strong class='bg-yellow_mm px-2'>1 Gbps</strong>",
+                        "telephone": "Fijo con llamadas <strong class='bg-yellow_mm px-2'>ilimitadas</strong> a fijos y móviles",
+                        "router": "Router wifi e instalación gratis"
+                    },
+                    "mobile": {
+                        "description": "<strong class='bg-yellow_mm px-2'>60GB</strong> y min ilimitados (5G)",
+                        "speed": null,
+                        "minutes": null,
+                        "roaming": "Roaming incluido en Europa"
+                    },
+                    "tv": null,
+                    "price_text": "3 meses, luego:",
+                    "prices": {
+                        "uno": [
+                            "41",
+                            "<strong>,00€/mes</strong> Sin IVA"
+                        ],
+                        "dos": [
+                            "49",
+                            ",00€/mes"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": true,
+                    "is_duo_or_trio": false
+                },
+                {
+                    "id": "pi-3",
+                    "title": "Móvil 80GB",
+                    "landline": null,
+                    "mobile": {
+                        "description": "<strong class='bg-yellow_mm px-2'>80GB</strong> de Datos",
+                        "speed": "<strong class='bg-yellow_mm px-2'>máxima ⚡︎⚡︎⚡︎</strong>",
+                        "minutes": "Min <strong class='bg-yellow_mm px-2'>ilimitados</strong>",
+                        "roaming": "Roaming incluido en Europa"
+                    },
+                    "tv": null,
+                    "price_text": "Después de promos:",
+                    "prices": {
+                        "uno": [
+                            "9",
+                            "<strong>,00€/mes</strong> Sin IVA"
+                        ],
+                        "dos": [
+                            "18",
+                            ",00€/mes"
+                        ]
+                    },
+                    "is_online": false,
+                    "have_permanence": false,
+                    "have_device": false,
+                    "is_duo_or_trio": false
+                }
+            ]
+        },
+        "dos": null,
+        "tres": null
+    },
+    "fibra_movil": {
+        "uno": {
+            "title": "Fibra 300 y 600Mb",
+            "description": "Paquetes empresariales con fibra de 300 y 600Mb, fijo, datos móviles y llamadas ilimitadas.",
+            "products": [
+                {
+                    "id": "pfm-1",
+                    "title": "Fibra 300Mb + Móvil 12GB",
+                    "landline": {
+                        "internet": "<strong class='bg-yellow_mm px-2'>300 Mbps</strong>",
+                        "telephone": "Fijo con llamadas <strong class='bg-yellow_mm px-2'>ilimitadas</strong> a fijos y <strong class='bg-yellow_mm px-2'>30</strong> min a móviles",
+                        "router": "Router wifi e instalación gratis"
+                    },
+                    "mobile": {
+                        "description": "<strong class='bg-yellow_mm px-2'>12GB</strong> y min ilimitados (5G)",
+                        "speed": null,
+                        "minutes": null,
+                        "roaming": "Roaming incluido en Europa"
+                    },
+                    "tv": null,
+                    "price_text": null,
+                    "prices": {
+                        "uno": [
+                            "24",
+                            "<strong>,71€/mes</strong> Sin IVA"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": true,
+                    "is_duo_or_trio": false
+                },
+                {
+                    "id": "pfm-2",
+                    "title": "Fibra 600Mb + Móvil 40GB",
+                    "landline": {
+                        "internet": "<strong class='bg-yellow_mm px-2'>600 Mbps</strong>",
+                        "telephone": "Fijo con llamadas <strong class='bg-yellow_mm px-2'>ilimitadas</strong> a fijos y móviles",
+                        "router": "Router wifi e instalación gratis"
+                    },
+                    "mobile": {
+                        "description": "<strong class='bg-yellow_mm px-2'>40GB</strong> y min ilimitados (5G)",
+                        "speed": null,
+                        "minutes": null,
+                        "roaming": "Roaming incluido en Europa"
+                    },
+                    "tv": null,
+                    "price_text": null,
+                    "prices": {
+                        "uno": [
+                            "36",
+                            "<strong>,00€/mes</strong> Sin IVA"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": true,
+                    "is_duo_or_trio": false
+                },
+                {
+                    "id": "pfm-3",
+                    "title": "Fibra 600Mb + Móvil 60GB",
+                    "landline": {
+                        "internet": "<strong class='bg-yellow_mm px-2'>600 Mbps</strong>",
+                        "telephone": "Fijo con llamadas <strong class='bg-yellow_mm px-2'>ilimitadas</strong> a fijos y móviles",
+                        "router": "Router wifi e instalación gratis"
+                    },
+                    "mobile": {
+                        "description": "<strong class='bg-yellow_mm px-2'>60GB</strong> y min ilimitados (5G)",
+                        "speed": null,
+                        "minutes": null,
+                        "roaming": "Roaming incluido en Europa"
+                    },
+                    "tv": null,
+                    "price_text": null,
+                    "prices": {
+                        "uno": [
+                            "41",
+                            "<strong>,00€/mes</strong> Sin IVA"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": true,
+                    "is_duo_or_trio": false
+                },
+                {
+                    "id": "pfm-4",
+                    "title": "Fibra 600Mb + Móvil 120GB",
+                    "landline": {
+                        "internet": "<strong class='bg-yellow_mm px-2'>600 Mbps</strong>",
+                        "telephone": "Fijo con llamadas <strong class='bg-yellow_mm px-2'>ilimitadas</strong> a fijos y móviles",
+                        "router": "Router wifi e instalación gratis"
+                    },
+                    "mobile": {
+                        "description": "<strong class='bg-yellow_mm px-2'>120GB</strong> y min ilimitados (5G)",
+                        "speed": null,
+                        "minutes": null,
+                        "roaming": "Roaming incluido en Europa"
+                    },
+                    "tv": null,
+                    "price_text": null,
+                    "prices": {
+                        "uno": [
+                            "48",
+                            "<strong>,00€/mes</strong> Sin IVA"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": true,
+                    "is_duo_or_trio": false
+                }
+            ]
+        },
+        "dos": {
+            "title": "Fibra 1Gb",
+            "description": "Paquetes empresariales con fibra de 1Gb, fijo, datos móviles y llamadas ilimitadas.",
+            "products": [
+                {
+                    "id": "pfm-1",
+                    "title": "Fibra 1Gb + Móvil 40GB",
+                    "landline": {
+                        "internet": "<strong class='bg-yellow_mm px-2'>1 Gbps</strong>",
+                        "telephone": "Fijo con llamadas <strong class='bg-yellow_mm px-2'>ilimitadas</strong> a fijos y móviles",
+                        "router": "Router wifi e instalación gratis"
+                    },
+                    "mobile": {
+                        "description": "<strong class='bg-yellow_mm px-2'>40GB</strong> y min ilimitados (5G)",
+                        "speed": null,
+                        "minutes": null,
+                        "roaming": "Roaming incluido en Europa"
+                    },
+                    "tv": null,
+                    "price_text": "3 meses, luego:",
+                    "prices": {
+                        "uno": [
+                            "36",
+                            "<strong>,00€/mes</strong> Sin IVA"
+                        ],
+                        "dos": [
+                            "44",
+                            ",00€/mes"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": true,
+                    "is_duo_or_trio": false
+                },
+                {
+                    "id": "pfm-2",
+                    "title": "Fibra 1Gb + Móvil 60GB",
+                    "landline": {
+                        "internet": "<strong class='bg-yellow_mm px-2'>1 Gbps</strong>",
+                        "telephone": "Fijo con llamadas <strong class='bg-yellow_mm px-2'>ilimitadas</strong> a fijos y móviles",
+                        "router": "Router wifi e instalación gratis"
+                    },
+                    "mobile": {
+                        "description": "<strong class='bg-yellow_mm px-2'>60GB</strong> y min ilimitados (5G)",
+                        "speed": null,
+                        "minutes": null,
+                        "roaming": "Roaming incluido en Europa"
+                    },
+                    "tv": null,
+                    "price_text": "3 meses, luego:",
+                    "prices": {
+                        "uno": [
+                            "41",
+                            "<strong>,00€/mes</strong> Sin IVA"
+                        ],
+                        "dos": [
+                            "49",
+                            ",00€/mes"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": true,
+                    "is_duo_or_trio": false
+                },
+                {
+                    "id": "pfm-3",
+                    "title": "Fibra 1Gb + Móvil 120GB",
+                    "landline": {
+                        "internet": "<strong class='bg-yellow_mm px-2'>1 Gbps</strong>",
+                        "telephone": "Fijo con llamadas <strong class='bg-yellow_mm px-2'>ilimitadas</strong> a fijos y móviles",
+                        "router": "Router wifi e instalación gratis"
+                    },
+                    "mobile": {
+                        "description": "<strong class='bg-yellow_mm px-2'>120GB</strong> y min ilimitados (5G)",
+                        "speed": null,
+                        "minutes": null,
+                        "roaming": "Roaming incluido en Europa"
+                    },
+                    "tv": null,
+                    "price_text": "3 meses, luego:",
+                    "prices": {
+                        "uno": [
+                            "48",
+                            "<strong>,00€/mes</strong> Sin IVA"
+                        ],
+                        "dos": [
+                            "56",
+                            ",00€/mes"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": true,
+                    "is_duo_or_trio": false
+                }
+            ]
+        },
+        "tres": null
+    },
+    "fibra": {
+        "uno": {
+            "title": "¿Por qué contratar solo fibra con MasMovil Negocios?​ ​",
+            "description": "MasMovil Negocios te ofrece las mejores opciones de conexión, contrátalas ahora y aprovecha grandes promociones y descuentos. Elige la tarifa de fibra óptica que más se adapta a tus necesidades y disfrútala al máximo.",
+            "products": [
+                {
+                    "id": "pf-1",
+                    "title": "Fibra 500Mb",
+                    "landline": {
+                        "internet": "<strong class='bg-yellow_mm px-2'>500 Mbps</strong>",
+                        "telephone": "Fijo con llamadas <strong class='bg-yellow_mm px-2'>ilimitadas</strong> a fijos y móviles",
+                        "router": "Router wifi e instalación gratis"
+                    },
+                    "mobile": null,
+                    "tv": null,
+                    "price_text": "12 meses, luego:",
+                    "prices": {
+                        "uno": [
+                            "16",
+                            "<strong>,52€/mes</strong> Sin IVA"
+                        ],
+                        "dos": [
+                            "26",
+                            ",44€/mes"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": true,
+                    "is_duo_or_trio": false
+                },
+                {
+                    "id": "pf-1",
+                    "title": "Fibra 1Gb",
+                    "landline": {
+                        "internet": "<strong class='bg-yellow_mm px-2'>1 Gbps</strong>",
+                        "telephone": "Fijo con llamadas <strong class='bg-yellow_mm px-2'>ilimitadas</strong> a fijos y móviles",
+                        "router": "Router wifi e instalación gratis"
+                    },
+                    "mobile": null,
+                    "tv": null,
+                    "price_text": "Después de promos:",
+                    "prices": {
+                        "uno": [
+                            "16",
+                            "<strong>,52€/mes</strong> Sin IVA"
+                        ],
+                        "dos": [
+                            "34",
+                            ",70€/mes"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": true,
+                    "is_duo_or_trio": false
+                }
+            ]
+        },
+        "dos": null,
+        "tres": null
+    },
+    "movil": {
+        "uno": {
+            "title": "Las mejores tarifas móviles de contrato con MasMovil Negocios",
+            "description": "Descubre las mejores tarifas de contrato para tu móvil con las ofertas MasMovil Negocios con portabilidad. Elige entre las tarifas MasMovil Negocios contrato Ilimitadas, con GB de datos ilimitados y llamadas ilimitadas a móviles y fijos nacionales.",
+            "products": [
+                {
+                    "id": "pm-1",
+                    "title": "Móvil 20GB",
+                    "landline": null,
+                    "mobile": {
+                        "description": "<strong class='bg-yellow_mm px-2'>20GB</strong> de Datos (5G)",
+                        "speed": "<strong class='bg-yellow_mm px-2'>máxima ⚡︎⚡︎⚡︎</strong>",
+                        "minutes": "Min <strong class='bg-yellow_mm px-2'>ilimitados</strong>",
+                        "roaming": "Roaming incluido en Europa"
+                    },
+                    "tv": null,
+                    "price_text": "12 meses, luego:",
+                    "prices": {
+                        "uno": [
+                            "5",
+                            "<strong>,00€/mes</strong> Sin IVA"
+                        ],
+                        "dos": [
+                            "10",
+                            ",00€/mes"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": false,
+                    "is_duo_or_trio": false
+                },
+                {
+                    "id": "pm-2",
+                    "title": "Móvil 35GB",
+                    "landline": null,
+                    "mobile": {
+                        "description": "<strong class='bg-yellow_mm px-2'>35GB</strong> de Datos (5G)",
+                        "speed": "<strong class='bg-yellow_mm px-2'>máxima ⚡︎⚡︎⚡︎</strong>",
+                        "minutes": "Min <strong class='bg-yellow_mm px-2'>ilimitados</strong>",
+                        "roaming": "Roaming incluido en Europa"
+                    },
+                    "tv": null,
+                    "price_text": "12 meses, luego:",
+                    "prices": {
+                        "uno": [
+                            "9",
+                            "<strong>,00€/mes</strong> Sin IVA"
+                        ],
+                        "dos": [
+                            "14",
+                            ",00€/mes"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": false,
+                    "is_duo_or_trio": false
+                },
+                {
+                    "id": "pm-3",
+                    "title": "Móvil 80GB",
+                    "landline": null,
+                    "mobile": {
+                        "description": "<strong class='bg-yellow_mm px-2'>80GB</strong> de Datos (5G)",
+                        "speed": "<strong class='bg-yellow_mm px-2'>máxima ⚡︎⚡︎⚡︎</strong>",
+                        "minutes": "Min <strong class='bg-yellow_mm px-2'>ilimitados</strong>",
+                        "roaming": "Roaming incluido en Europa"
+                    },
+                    "tv": null,
+                    "price_text": "12 meses, luego:",
+                    "prices": {
+                        "uno": [
+                            "9",
+                            "<strong>,00€/mes</strong> Sin IVA"
+                        ],
+                        "dos": [
+                            "18",
+                            ",00€/mes"
+                        ]
+                    },
+                    "have_device": false,
+                    "is_online": false,
+                    "have_permanence": false,
+                    "is_duo_or_trio": false
+                }
+            ]
+        },
+        "dos": null,
+        "tres": null
+    }
+}

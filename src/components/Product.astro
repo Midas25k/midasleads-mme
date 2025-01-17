@@ -1,0 +1,116 @@
+---
+const { product } = Astro.props;
+
+import ModalFull from './ModalFull.astro';
+
+import Wifi from 'astro-heroicons/outline/Wifi.astro';
+import Phone from 'astro-heroicons/outline/Phone.astro';
+import Server from 'astro-heroicons/outline/Server.astro';
+import DevicePhoneMobile from 'astro-heroicons/outline/DevicePhoneMobile.astro';
+import ArrowsUpDown from 'astro-heroicons/outline/ArrowsUpDown.astro';
+import PhoneArrowUpRight from 'astro-heroicons/outline/PhoneArrowUpRight.astro';
+import GlobeAlt from 'astro-heroicons/outline/GlobeAlt.astro';
+import Tv from 'astro-heroicons/outline/Tv.astro';
+---
+
+<div class="w-full sm:max-w-64 md:max-w-xs lg:max-w-xs xl:max-w-xs 2xl:max-w-md p-6 bg-white border-2 border-gray-200 rounded-md drop-shadow-lg flex flex-col">
+    <div class="flex-grow space-y-4">
+        <div>
+            <span class="font-anton tracking-wide font-normal text-2xl sm:text-3xl">{product.title}</span>
+        </div>
+        <div class="flex border-[3px] border-stone-800 border-dashed bg-yellow_mm">
+            <div class="flex flex-row space-x-2 m-auto p-2">
+                {product.prices.uno.map((price, index) => (
+                    <span class:list={[
+                        "",
+                        {
+                            "font-anton tracking-wide text-5xl sm:text-6xl": index === 0,
+                            "font-poppins text-base max-w-24": index !== 0
+                        }
+                    ]} set:html={price}></span>
+                ))}
+            </div>
+        </div>
+        <div class="mb-6 space-y-2">
+            {product.landline && (
+                <div class="flex space-x-2">
+                    <Wifi class="w-7 h-7 flex-shrink-0"/>
+                    <span class="text-base px-2 font-normal" set:html={ "Fibra " + product.landline.internet}>
+                    </span>
+                </div>
+            )}
+            {!product.is_duo_or_trio && product.landline && product.landline.telephone && (
+                <div class="flex space-x-2">
+                    <Phone class="w-7 h-7 flex-shrink-0"/>
+                    <span class="text-base px-2 font-normal" set:html={product.landline.telephone}>
+                    </span>
+                </div>
+            )}
+            {!product.is_duo_or_trio && product.landline && product.landline.router && (
+                <div class="flex space-x-2">
+                    <Server class="w-7 h-7 flex-shrink-0"/>
+                    <span class="text-base px-2 font-normal" set:html={product.landline.router}>
+                    </span>
+                </div>
+            )}
+            {product.mobile && (        
+                <div class="flex space-x-2">
+                    <DevicePhoneMobile class="w-7 h-7 flex-shrink-0"/>
+                    <span class="text-base px-2 font-normal" set:html={product.mobile.description}>
+                    </span>
+                </div>   
+            )}
+            {product.mobile && product.mobile.speed && (        
+                <div class="flex space-x-2">
+                    <ArrowsUpDown class="w-7 h-7 flex-shrink-0"/>
+                    <span class="text-base px-2 font-normal" set:html={ "Velocidad " + product.mobile.speed}>
+                    </span>
+                </div>   
+            )}
+            {!product.is_duo_or_trio && product.mobile && product.mobile.minutes && (
+                <div class="flex space-x-2">
+                    <PhoneArrowUpRight class="w-7 h-7 flex-shrink-0"/>
+                    <span class="text-base px-2 font-normal" set:html={product.mobile.minutes}>
+                    </span>
+                </div>
+            )}
+            {!product.is_duo_or_trio && product.mobile && product.mobile.roaming && (
+                <div class="flex space-x-2">
+                    <GlobeAlt class="w-7 h-7 flex-shrink-0"/>
+                    <span class="text-base px-2 font-normal">
+                        {product.mobile.roaming}
+                    </span>
+                </div>
+            )}
+            {product.tv && (        
+                <div class="flex space-x-2">
+                    <Tv class="w-7 h-7 flex-shrink-0"/>
+                    <span class="text-base px-2 font-normal">
+                        {product.tv}
+                    </span>
+                </div>   
+            )}
+        </div>
+        <div class="flex flex-col space-y-1">
+            {product.have_device && (
+                <span class="text-base font-bold text-center p-1 bg-zinc-950 text-yellow_mm">¡Incluye un Dispositivo GRATIS!</span>
+            )}
+            {product.is_online && (
+                <span class="text-base font-bold text-center p-1 bg-zinc-950 text-yellow_mm">Promo exclusiva online</span>
+            )}
+            {!product.have_permanence && (
+                <span class="text-base font-bold text-center p-1 bg-zinc-950 text-yellow_mm">¡Sin permanencia!</span>
+            )}
+            {product.prices.dos && (
+                <span class="text-base font-bold text-center p-1 bg-zinc-950 text-yellow_mm">{product.price_text} {product.prices.dos}</span>
+            )}
+        </div>
+    </div>
+    <div class="flex justify-center space-x-4 mt-6">
+        <button id={"button-modal-"+product.id} class="bg-green_mm hover:bg-green_mm_hover text-white text-base font-bold px-10 py-2 drop-shadow-lg rounded-md" type="button">
+            ME INTERESA
+        </button>
+    </div>
+</div>
+
+<ModalFull data_modal={product} />

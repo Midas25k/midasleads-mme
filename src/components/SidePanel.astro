@@ -1,0 +1,274 @@
+---
+import Phone from "astro-heroicons/outline/Phone.astro";
+import Tv from "astro-heroicons/outline/Tv.astro";
+import Wifi from "astro-heroicons/outline/Wifi.astro";
+
+// Ajusta o define las variables de entorno si las usas:
+const API_URL = import.meta.env.PUBLIC_API_URL || "https://tu-dominio.com"; 
+const CAMPAIGN_ID = import.meta.env.PUBLIC_CAMPAIGN_ID || 9999;
+---
+
+<style>
+  /* Panel lateral */
+  .side-panel {
+    position: absolute;
+    top: 70px;      
+    right: 0;
+    margin-right: 1rem;
+    width: 300px;
+    background-color: #fff;
+    border-left: 1px solid #ccc;
+    box-shadow: -3px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 40;
+    padding: 0.5rem;
+  }
+
+  .side-panel h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  /* Tarjetas de producto */
+  .option-box {
+    @apply bg-gray-100 flex flex-col items-center justify-center
+           rounded border border-gray-200
+           py-2 px-2 font-bold text-xs text-gray-600
+           cursor-pointer leading-tight;
+  }
+  .option-box:hover {
+    @apply bg-gray-200;
+  }
+  .option-box.disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+  .option-box.selected {
+    @apply bg-green-100 border-green-500;
+    color: #0f5132;
+  }
+
+  .small-text {
+    @apply text-sm text-gray-600 mt-2 text-center px-2;
+  }
+
+  /* Ocultar en pantallas más pequeñas (opcional) */
+  @media (max-width: 1024px) {
+    .side-panel {
+      display: none;
+    }
+  }
+
+  /* Modal de éxito */
+  .overlay-success {
+    @apply fixed inset-0 hidden opacity-0 bg-black bg-opacity-60
+           z-50 flex items-center justify-center transition-opacity duration-300;
+  }
+  .overlay-success.visible {
+    @apply block opacity-100;
+  }
+  .modal-content-success {
+    @apply bg-white rounded-lg p-6 w-80 text-center;
+  }
+</style>
+
+<!-- CONTENIDO DEL SIDEPANEL -->
+<div class="side-panel">
+  <h2>CREA TU OFERTA</h2>
+
+  <div class="grid grid-cols-2 gap-2 mb-3">
+    <!-- Fibra + Fijo -->
+    <div class="option-box" data-product="fibra_fijo">
+      <Wifi class="w-6 h-6 mb-1 text-gray-600" />
+      <span>Fibra + Fijo incluido</span>
+    </div>
+
+    <!-- Móvil -->
+    <div class="option-box" data-product="movil">
+      <Phone class="w-6 h-6 mb-1 text-gray-600" />
+      <span>Móvil</span>
+    </div>
+
+    <!-- TV () -->
+    <div class="option-box " data-product="tv">
+      <Tv class="w-6 h-6 mb-1 text-gray-600" />
+      <span>TV</span>
+    </div>
+
+    <!-- Líneas adicionales () -->
+    <div class="option-box " data-product="lineas">
+      <span>Líneas adicionales</span>
+    </div>
+  </div>
+
+  <p class="small-text">
+    Solo quedan tus datos para ofrecerte el mejor precio
+  </p>
+
+  <!-- Formulario C.P. + Móvil -->
+  <form id="sidepanel-form" class="space-y-3 mt-2">
+    <div class="flex space-x-2">
+      <input
+        id="cp-input"
+        type="text"
+        placeholder="C.P."
+        class="w-20 border border-gray-300 rounded px-2 py-1 text-sm"
+      />
+      <input
+        id="phone-input"
+        type="text"
+        placeholder="Móvil"
+        class="flex-1 border border-gray-300 rounded px-2 py-1 text-sm"
+      />
+    </div>
+    
+    <button
+      id="calculate-button"
+      type="button"
+      class="w-full bg-green_mm hover:bg-green_mm_hover
+             text-white font-bold py-2 px-4 rounded"
+    >
+      CALCULAR MI PRECIO
+    </button>
+  </form>
+
+  <p class="small-text">
+    En MÁSMOVIL vamos a tratar tus datos para contactarte con fines comerciales.
+    Siempre podrás acceder o ellos o retirarnos tu consentimiento. Más info en
+    <a href="/politica-de-privacidad" class="text-green_mm font-bold hover:underline">
+      Política de Privacidad
+    </a>.
+  </p>
+
+  <!-- Botón TE LLAMAMOS GRATIS -->
+  <div class="mt-2">
+    <button
+      type="button"
+      class="w-full bg-white text-green_mm border border-green_mm
+             font-bold py-2 px-4 rounded"
+    >
+      TE LLAMAMOS GRATIS
+    </button>
+  </div>
+</div>
+
+<!-- Modal de Éxito (oculto por defecto) -->
+<div id="modal-success" class="overlay-success">
+  <div class="modal-content-success space-y-2">
+    <h3 class="text-xl font-bold">Muchas gracias por su interés.</h3>
+    <p>Hemos recogido su petición correctamente.</p>
+    <p>Nos pondremos en contacto con usted lo antes posible.</p>
+  </div>
+</div>
+
+<!-- SCRIPT para la lógica del sidepanel -->
+<script>
+  // Obtenemos referencias y “casteamos” a los tipos adecuados
+  const productCards = document.querySelectorAll('.option-box');
+  const cpInput = document.getElementById('cp-input') as HTMLInputElement | null;
+  const phoneInput = document.getElementById('phone-input') as HTMLInputElement | null;
+  const calculateBtn = document.getElementById('calculate-button') as HTMLButtonElement | null;
+  const modalSuccess = document.getElementById('modal-success');
+
+  // Almacén de productos seleccionados
+  let selectedProducts: string[] = [];
+
+  // Función para alternar la selección de cada tarjeta
+  function toggleProductSelection(e: Event) {
+    const card = e.currentTarget as HTMLDivElement;
+    if (card.classList.contains('disabled')) {
+      return;
+    }
+    const productValue = card.dataset.product;
+    if (!productValue) return;
+    
+    // Agregar / quitar la selección
+    if (!selectedProducts.includes(productValue)) {
+      selectedProducts.push(productValue);
+      card.classList.add('selected');
+    } else {
+      selectedProducts = selectedProducts.filter(p => p !== productValue);
+      card.classList.remove('selected');
+    }
+  }
+
+  // Asignar el listener a cada tarjeta
+  productCards.forEach(card => {
+    card.addEventListener('click', toggleProductSelection);
+  });
+
+  // Manejo del click en "CALCULAR MI PRECIO"
+  if (calculateBtn) {
+    calculateBtn.addEventListener('click', async () => {
+      if (!cpInput || !phoneInput) return;
+
+      const cpValue = cpInput.value.trim();
+      const phoneValue = phoneInput.value.trim();
+
+      // Validaciones
+      if (!selectedProducts.length) {
+        alert("Por favor, selecciona al menos un producto.");
+        return;
+      }
+      if (!cpValue || !phoneValue) {
+        alert("Por favor, introduce tu C.P. y teléfono.");
+        return;
+      }
+
+      // Construye el objeto a enviar
+      const payload = {
+        phone: phoneValue,
+        operator: null,
+        segment: cpValue,    // guardamos el CP en segment
+        doc: null,
+        full_name: null,
+        full_address: null,
+        email: null,
+        order: selectedProducts.join(", "),
+        campaign_id: import.meta.env.PUBLIC_CAMPAIGN_ID
+      };
+
+      try {
+        const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/api/main/lead/create`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.status === 201) {
+          // Éxito -> mostramos el modal de confirmación
+          if (modalSuccess) {
+            modalSuccess.classList.add('visible');
+          }
+
+          // Limpiamos el formulario y la selección
+          cpInput.value = "";
+          phoneInput.value = "";
+          selectedProducts = [];
+          productCards.forEach((card) => {
+            card.classList.remove('selected');
+          });
+
+          // Ocultamos el modal al cabo de 3 segundos (opcional)
+          setTimeout(() => {
+            if (modalSuccess) {
+              modalSuccess.classList.remove('visible');
+            }
+          }, 3000);
+
+        } else {
+          // Si la API da error, obtén mensaje
+          const data = await response.json();
+          alert(data.detail || "Error al procesar la solicitud");
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Error de conexión. Por favor, inténtalo de nuevo.");
+      }
+    });
+  }
+</script>

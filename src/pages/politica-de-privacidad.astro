@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+
+import global_json from '../data/global.json';
+
+let global = global_json;
+---
+
+<Layout title="Política de Privacidad">
+	<main>
+		<div class="flex flex-col mx-auto max-w-screen-2xl px-8 py-8 space-y-6">
+            <span class="text-3xl sm:text-4xl text-center">
+				Política de privacidad
+			</span>
+
+            <span class="text-lg sm:text-xl">
+				En cumplimiento de lo dispuesto en el Reglamento General de Protección de Datos vigente en la Unión Europea, el titular de este consentimiento autoriza a {global.nombre_empresa} a tratar sus datos personales, y otorga esta autorización de manera expresa, libre, inequívoca e informada.
+			</span>
+            <span class="text-lg sm:text-xl">
+				De la misma manera, el titular de este consentimiento ha sido informado de los siguientes datos:
+			</span>
+
+            <span class="text-2xl sm:text-3xl">
+				Responsable del tratamiento.
+			</span>
+            <span class="text-lg sm:text-xl">
+                El responsable del tratamiento es {global.nombre_empresa} con CIF {global.cif_empresa} y domicilio en {global.direccion_empresa}
+            </span>
+
+            <span class="text-2xl sm:text-3xl">
+				Finalidad
+			</span>
+            <span class="text-lg sm:text-xl">
+                Los datos serán utilizados para:
+                <ul class="list-decimal ps-8 pt-4">
+                    <li>
+                        Gestionar la solicitud de la información requerida
+                    </li>
+                    <li>
+                        Mantenerle informado sobre la actividad de {global.nombre_empresa}
+                    </li>
+                </ul>
+            </span>
+
+            <span class="text-2xl sm:text-3xl">
+				Plazo de conservación
+			</span>
+            <span class="text-lg sm:text-xl">
+                Los datos personales proporcionados se conservarán durante un plazo de cinco años a partir de la última confirmación de su interés, salvo que se solicite su supresión por el interesado.
+            </span>
+
+            <span class="text-2xl sm:text-3xl">
+				Base jurídica
+			</span>
+            <span class="text-lg sm:text-xl">
+                La base jurídica del tratamiento tiene su fundamento en el cumplimiento de las obligaciones legales en el propio interés personal del interesado que presta su consentimiento.
+            </span>
+
+            <span class="text-2xl sm:text-3xl">
+				Destinatarios
+			</span>
+            <span class="text-lg sm:text-xl">
+                Para cumplir las finalidades indicadas en la presente Política de Privacidad, puede ser necesario que demos acceso a tus datos personales a terceras partes que nos presten apoyo en los servicios que te ofrecemos, a saber: {global.nombre_empresa}
+            </span>
+
+            <span class="text-2xl sm:text-3xl">
+				Derechos
+			</span>
+            <span class="text-lg sm:text-xl">
+                El interesado podrá ejercitar los derechos en relación sus datos personales que le concede el RGPD. Derechos de acceso, rectificación, supresión, a la limitación del tratamiento, a la portabilidad de los datos y a la oposición. El ejercicio de dichos derechos podrá ejercitarlo dirigiéndose por escrito al responsable del tratamiento. Asimismo, tiene derecho a retirar el consentimiento prestado y a reclamar ante la Agencia española de Protección de Datos, en su condición de Autoridad de Control. Si necesita ayuda para formalizar dicha solicitud, le facilitaremos un formulario a tal efecto.
+            </span>
+
+            <span class="text-2xl sm:text-3xl">
+				Procedencia
+			</span>
+            <span class="text-lg sm:text-xl">
+                Los datos recogidos son facilitados por el interesado a través del formulario de contacto.
+            </span>
+
+            <span class="text-2xl sm:text-3xl">
+				Información:
+			</span>
+            <span class="text-lg sm:text-xl">
+                Todos los datos serán tratados conforme a esta política privacidad. Si no estuvieras de acuerdo con la misma, por favor, no nos envíes tus datos. Recuerda que puede ponerse en contacto con nosotros a través del correo electrónico {global.email_empresa} o visitarnos en nuestras instalaciones, para recibir información al respecto sin necesidad de remitirnos datos personales. Cuando nos envías tus datos personales a través del formulario de contacto, es necesario que previamente aceptes esta política de privacidad y para ello, deberás marcar la casilla del checkbox “He leído y acepto los términos de la Política de Privacidad”. Nuestro sistema no te permitirá enviar el formulario, sino aceptas la política previamente.
+            </span>
+            <span class="text-lg sm:text-xl">
+                Cuando rellenas nuestro formulario de contacto web, nos estás enviando tu nombre, teléfono y correo electrónico, datos personales sometidos a la legislación vigente. Por ello, nos autorizas de manera expresa a la recogida y tratamiento de los mismos, bajo las condiciones que estás leyendo. Esta información será empleada exclusivamente para gestionar las finalidades recogidas en este consentimiento.
+            </span>
+            <span class="text-lg sm:text-xl">
+                Estos datos personales serán incorporados en un registro titularidad de Para cumplir las finalidades indicadas en la presente Política de Privacidad, puede ser necesario que demos acceso a tus datos personales a terceras partes que nos presten apoyo en los servicios que te ofrecemos, a saber: {global.nombre_empresa}, que mantenemos en el Registro General de Protección de Datos. Los datos personales, se tratarán principalmente en soporte automatizado, sometidos a controles y medidas de seguridad adecuadas, que evitarán en la medida de lo posible, los accesos indebidos, pérdidas de información o corrupción de los datos.
+            </span>
+            <span class="text-lg sm:text-xl">
+                Disponemos de servidores con capacidad suficiente para mantener estos datos con plenas garantías de seguridad, integridad y disponibilidad. Como titular de los datos puedes ejercer tus derechos dirigiéndote a la dirección de correo electrónico {global.email_empresa}, indicando en el asunto el derecho que quieres ejercer.
+            </span>
+            <span class="text-lg sm:text-xl">
+                Cuando se envíen comunicaciones comerciales a los usuarios de nuestra web que hayan remitido el formulario de contacto, se establecerá en la comunicación, las indicaciones claras de cómo proceder a revocar este consentimiento. Todos los envíos de carácter comercial o publicitario, podrán ser cancelados por los usuarios en todo momento y siempre con un procedimiento sencillo y gratuito, mediante correo electrónico solicitando baja o mediante el uso de un enlace de cancelación. Por favor, no dudes en consultarnos este tema en cualquier momento o acceder a esta política de privacidad nuevamente, en nuestra página web.
+            </span>
+        </div>
+		<Footer/>
+	</main>
+</Layout>

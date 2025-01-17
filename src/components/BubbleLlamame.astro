@@ -1,0 +1,145 @@
+---
+import Phone from 'astro-heroicons/outline/Phone.astro';
+
+import global_json from '../data/global.json';
+
+let global = global_json;
+---
+
+<div class="fixed bottom-5 right-5 flex items-end">
+    <div id="bubble-llamame-ya" class="hidden sm:relative opacity-0 transition-opacity duration-200 bg-white border-2 border-gray-200 p-6 rounded-lg shadow-sm shadow-gray-600 mx-5 max-w-xl">
+        <div class="space-y-2">
+            <p class="text-xl text-center">
+                Llámanos al
+            </p>
+            <div class="flex justify-center w-full">
+                <a href={"tel:"+global.phone} class="bg-green_mm hover:bg-green_mm_hover text-white text-base text-center font-bold px-5 py-3 drop-shadow-lg rounded-md flex space-x-2 justify-center" type="button">
+                    <Phone class="w-6 h-6 flex-shrink-0"/> 
+                    <span class="whitespace-nowrap">
+                        {global.phone.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                    </span>
+                </a>
+            </div>
+        </div>
+        <p class="text-xl text-center py-4">
+            O Déjanos tu información
+        </p>
+        <form id="form-llamame-ya" class="mx-auto pt-4 text-sm">
+            <input type="text" name="product" id="product_bubble" class="hidden" value="Llámame ya!"/>
+            <div class="grid md:grid-cols md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="number" name="phone" id="phone_bubble" class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green_mm peer" placeholder=" " required />
+                    <label for="phone_bubble" class="peer-focus:font-medium absolute text-gray-700 duration-300 transform -translate-y-6 scale-90 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green_mm_hover peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-6">¿Cuál es tu número de teléfono? *</label>
+                </div>
+                <!-- <div class="relative z-0 w-full mb-5 group">
+                    <select name="operator" id="operator_bubble" class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green_mm peer" required>
+                        <option value="" selected>¿Cuál es tu operadora? *</option>
+                        {global.operators.map(operator => (
+                            <option value={operator}>{operator}</option>
+                        ))}
+                    </select>
+                </div> -->
+            </div>
+            <!-- <div class="grid md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="email" name="email" id="email_bubble" class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green_mm peer" placeholder=" " />
+                    <label for="email_bubble" class="peer-focus:font-medium absolute text-gray-700 duration-300 transform -translate-y-6 scale-90 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-red:text-blue-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-6">¿Cúal es tu email? (opcional)</label>
+                </div>
+            </div> -->
+            <div class="flex items-start mb-5">
+                <div class="flex items-center h-5">
+                    <input id="terms_bubble" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required />
+                </div>
+                <label for="terms_bubble" class="ms-2 font-medium text-gray-900">*He leído y acepto la <a target="_blank" href="/politica-de-privacidad" class="text-lime-700 font-bold hover:underline">política de privacidad</a></label>
+            </div>
+            <!-- <div class="flex items-start mb-5">
+                <div class="flex items-center h-5">
+                    <input id="comm_bubble" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required />
+                </div>
+                <label for="comm_bubble" class="ms-2 font-medium text-gray-900">Acepto recibir comunicaciones comerciales de MasMovil Negocios</label>
+            </div> -->
+            <div class="flex justify-center rounded-b">
+                <button type="submit" class="tracking-wider bg-green_mm hover:bg-green_mm_hover text-white text-base text-center font-bold px-5 py-3 drop-shadow-lg rounded-md flex space-x-2 justify-center">
+                    <span>
+                        LLAMADME GRATIS
+                    </span>
+                </button>
+            </div>
+        </form>
+    </div>
+    <button id="button-llamame-ya" class="bg-green_mm text-white py-2 px-2 rounded-full shadow-lg transition transform hover:bg-green_mm_hover hover:scale-110 font-bold flex items-center justify-center">
+        <Phone class="w-8 h-8 flex-shrink-0"/>
+    </button>
+</div>
+<script>
+    const bubbleLlamame = document.getElementById('bubble-llamame-ya');
+    const buttonLlamame = document.getElementById('button-llamame-ya');
+    const formLlamame = document.getElementById('form-llamame-ya') as HTMLFormElement;
+    const thanks = document.getElementsByClassName('thanks')[0];
+
+    buttonLlamame.addEventListener('click', function() {
+        if (bubbleLlamame.classList.contains('hidden')) {
+            bubbleLlamame.classList.remove('hidden');
+            setTimeout(() => {
+                bubbleLlamame.classList.remove('opacity-0');
+                bubbleLlamame.classList.add('opacity-100');
+            }, 10);
+        } else {
+            setTimeout(() => {
+                setTimeout(() => {
+                    bubbleLlamame.classList.add('hidden');
+                }, 500);
+                bubbleLlamame.classList.remove('opacity-100');
+                bubbleLlamame.classList.add('opacity-0');
+            }, 10);
+        }
+    });
+
+    formLlamame.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(formLlamame);
+        const data = Object.fromEntries(formData);
+
+        fetch(`${import.meta.env.PUBLIC_API_URL}/api/main/lead/create`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                "phone": data.phone,
+                "operator": data.operator,
+                "segment": "",
+                "email": data.email,
+                "order": data.product,
+                "campaign_id": import.meta.env.PUBLIC_CAMPAIGN_ID
+            })
+        }).then(response => {
+            if (response.status === 201) {
+                bubbleLlamame.classList.add('hidden');
+
+                formLlamame.reset();
+
+                thanks.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+                setTimeout(() => {
+                    thanks.classList.remove('opacity-0');
+                    thanks.classList.add('opacity-100');
+                }, 10);
+                setTimeout(() => {
+                    setTimeout(() => {
+                        thanks.classList.add('hidden');
+                    }, 500);
+                    thanks.classList.remove('opacity-100');
+                    thanks.classList.add('opacity-0');
+                    document.body.classList.remove('overflow-hidden');
+                }, 3000);
+            }
+
+            return response.json();
+        }).then(data => {
+            console.log(data.detail);
+        });
+    });
+</script>

@@ -1,0 +1,317 @@
+---
+const { banner } = Astro.props;
+
+import ModalFull from './ModalFull.astro';
+
+import Wifi from 'astro-heroicons/outline/Wifi.astro';
+import Phone from 'astro-heroicons/outline/Phone.astro';
+import Server from 'astro-heroicons/outline/Server.astro';
+import DevicePhoneMobile from 'astro-heroicons/outline/DevicePhoneMobile.astro';
+import ArrowsUpDown from 'astro-heroicons/outline/ArrowsUpDown.astro';
+import PhoneArrowUpRight from 'astro-heroicons/outline/PhoneArrowUpRight.astro';
+import GlobeAlt from 'astro-heroicons/outline/GlobeAlt.astro';
+import Tv from 'astro-heroicons/outline/Tv.astro';
+---
+
+<style>
+  /* Animaciones fade in/out */
+  .fade-in {
+    animation: fadeIn 1s forwards;
+  }
+  .fade-out {
+    animation: fadeOut 1s forwards;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(1.08);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1.0);
+    }
+  }
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+      transform: scale(1.0);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+  }
+  .hidden {
+    display: none;
+  }
+  .image1, .image2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+  }
+</style>
+
+<div class="relative bg-gradient-to-b md:p-4 rounded-lg banner1 unique-banner">
+  <div class="relative md:max-w-screen-2xl mx-auto">
+    <!-- Imágenes con animación -->
+    <div class="absolute w-full h-full" style="left: -220px; width: calc(100% + 240px);">
+      <img src={banner.img} class="image1 fade-in" alt="Imagen 1">
+      <img src={banner.img_3} class="image2 hidden" alt="Imagen 2">
+    </div>
+
+    <div class="max-w-screen-2xl mx-auto">
+      <div class="relative min-h-[16rem] sm:min-h-[32rem] py-6 overflow-hidden flex items-center">
+        <div class="w-full">
+          <div class="relative md:max-w-lg">
+            <!-- Contenedor general -->
+            <div class="flex flex-col space-y-1 mx-6 md:p-6 rounded-md">
+              
+              <!-- Títulos (duplicamos la misma frase en dos líneas) -->
+              <div class="grid justify-center space-y-2">
+                <!-- Primera línea -->
+                <div class={banner.dark_background ? "text-white md:text-green-900" : ""}>
+                  <span class="font-anton tracking-wide font-normal text-3xl sm:text-4xl block">
+                     {banner.title}
+                  </span>
+                </div>
+                <!-- Segunda línea (idéntica) -->
+                <div class={banner.dark_background ? "text-white md:text-green-900" : ""}>
+                  <span class="font-anton tracking-wide font-normal text-3xl sm:text-4xl block">
+                     {banner.title_2}
+                  </span>
+                </div>
+              </div>
+              
+<!-- Caja precios -->
+<div class="flex items-center relative space-x-4">
+  <!-- Contenedor del precio -->
+  <div class:list={[
+    "flex w-72 border-[3px] border-stone-800 border-dashed bg-white relative",
+    {
+      "text-white md:text-green-950": banner.dark_background
+    }
+  ]}>
+    <div class="flex flex-row space-x-2 m-auto p-2">
+      {banner.prices.uno.map((price, index) => (
+        <span
+          class:list={[
+            "",
+            {
+              "font-anton tracking-wide text-5xl sm:text-6xl": index === 0,
+              "font-poppins text-base max-w-24": index !== 0
+            }
+          ]}
+          set:html={price}
+        ></span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Separador "+" -->
+  <span class="text-black text-3xl font-bold">+</span>
+
+  <!-- Caja Gratis smartwatch -->
+  <div class:list={[
+    "flex items-center w-auto border-[3px] border-stone-800 border-dashed bg-white relative px-4 py-2 rounded-md shadow-sm",
+    {
+      "text-black": !banner.dark_background
+    }
+  ]}>
+    <span class="text-sm font-bold flex items-center space-x-2">
+      🎁 Gratis smartwatch
+    </span>
+  </div>
+</div>
+
+
+              <!-- Características -->
+              <div class:list={[
+                "mb-6 space-y-2",
+                {
+                  "font-poppins text-white md:text-green-950": banner.dark_background
+                }
+              ]}>
+                {banner.landline && (
+                  <div class="flex space-x-2">
+                    <Wifi class="w-7 h-7 flex-shrink-0"/>
+                    <span class="-tracking-wide text-base bg-yellow_mm px-2 font-bold">
+                      Fibra {banner.landline.internet}
+                    </span>
+                  </div>
+                )}
+                {!banner.is_duo_or_trio && banner.landline?.telephone && (
+                  <div class="flex space-x-2">
+                    <Phone class="w-7 h-7 flex-shrink-0"/>
+                    <span class="-tracking-wide text-base bg-yellow_mm px-2 font-bold">
+                      {banner.landline.telephone}
+                    </span>
+                  </div>
+                )}
+                {!banner.is_duo_or_trio && banner.landline?.router && (
+                  <div class="flex space-x-2">
+                    <Server class="w-7 h-7 flex-shrink-0"/>
+                    <span class="-tracking-wide text-base bg-yellow_mm px-2 font-bold">
+                      {banner.landline.router}
+                    </span>
+                  </div>
+                )}
+                {banner.mobile && (
+                  <div class="flex space-x-2">
+                    <DevicePhoneMobile class="w-7 h-7 flex-shrink-0"/>
+                    <span class="-tracking-wide text-base bg-yellow_mm px-2 font-bold">
+                      {banner.mobile.description}
+                    </span>
+                  </div>
+                )}
+                {banner.mobile?.speed && (
+                  <div class="flex space-x-2">
+                    <ArrowsUpDown class="w-7 h-7 flex-shrink-0"/>
+                    <span class="-tracking-wide text-base bg-yellow_mm px-2 font-bold">
+                      Velocidad {banner.mobile.speed}
+                    </span>
+                  </div>
+                )}
+                {!banner.is_duo_or_trio && banner.mobile?.minutes && (
+                  <div class="flex space-x-2">
+                    <PhoneArrowUpRight class="w-7 h-7 flex-shrink-0"/>
+                    <span class="-tracking-wide text-base bg-yellow_mm px-2 font-bold">
+                      {banner.mobile.minutes}
+                    </span>
+                  </div>
+                )}
+                {!banner.is_duo_or_trio && banner.mobile?.roaming && (
+                  <div class="flex space-x-2">
+                    <GlobeAlt class="w-7 h-7 flex-shrink-0"/>
+                    <span class="-tracking-wide text-base bg-yellow_mm px-2 font-bold">
+                      {banner.mobile.roaming}
+                    </span>
+                  </div>
+                )}
+                {banner.tv && (
+                  <div class="flex space-x-2">
+                    <Tv class="w-7 h-7 flex-shrink-0"/>
+                    <span class="-tracking-wide text-base bg-yellow_mm px-2 font-bold">
+                      {banner.tv}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              <!-- Etiquetas extra -->
+              <div class="flex flex-col space-y-1">
+                {banner.have_device && (
+                  <span class:list={[
+                    "text-base font-bold text-center p-1",
+                    {
+                      "": banner.dark_background,
+                      "bg-zinc-950 text-yellow_mm": !banner.dark_background
+                    }
+                  ]}>
+                    ¡Incluye un Dispositivo GRATIS!
+                  </span>
+                )}
+                {banner.is_online && (
+                  <span class:list={[
+                    "text-base font-bold text-center p-1",
+                    {
+                      "": banner.dark_background,
+                      "bg-zinc-950 text-yellow_mm": !banner.dark_background
+                    }
+                  ]}>
+                    ¡Promo exclusiva online!
+                  </span>
+                )}
+                {!banner.have_permanence && (
+                  <span class:list={[
+                    "text-base font-bold text-center p-1",
+                    {
+                      "": banner.dark_background,
+                      "bg-zinc-950 text-yellow_mm": !banner.dark_background
+                    }
+                  ]}>
+                    ¡Sin permanencia!
+                  </span>
+                )}
+                {banner.prices.dos && (
+                  <span class:list={[
+                    "text-base font-bold text-center p-1",
+                    {
+                      "": banner.dark_background,
+                      "bg-zinc-950 text-yellow_mm": !banner.dark_background
+                    }
+                  ]}>
+                    {banner.price_text} {banner.prices.dos}
+                  </span>
+                )}
+              </div>
+
+              <!-- Botón -->
+              <div class="flex justify-center">
+                <button
+                  id={"button-modal-"+banner.id}
+                  class="tracking-wider bg-green_mm hover:bg-green_mm_hover text-white text-base font-bold px-10 py-2 drop-shadow-lg rounded-md"
+                  type="button"
+                >
+                  LLAMADME GRATIS
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fade automático de imágenes -->
+<script>
+  let currentImg = 1;
+  setInterval(() => {
+    const img1 = document.querySelector('.image1');
+    const img2 = document.querySelector('.image2');
+    
+    const currentEl = currentImg === 1 ? img1 : img2;
+    const nextEl = currentImg === 1 ? img2 : img1;
+    
+    currentEl.classList.remove('fade-in', 'fade-out');
+    nextEl.classList.remove('fade-in', 'fade-out', 'hidden');
+
+    currentEl.classList.add('fade-out');
+    setTimeout(() => {
+      currentEl.classList.add('hidden');
+    }, 1000);
+
+    nextEl.classList.add('fade-in');
+    currentImg = currentImg === 1 ? 2 : 1;
+  }, 4000);
+</script>
+
+<!-- Ajuste posición en mobile -->
+<script is:inline>
+  if (typeof window !== "undefined") {
+    const banners = document.querySelectorAll(".unique-banner");
+    banners.forEach((banner) => {
+      const absolute = banner.querySelector(".absolute");
+      const images = banner.querySelectorAll(".absolute img");
+
+      const isMobile = window.innerWidth <= 768;
+      if (absolute) {
+        absolute.style.left = isMobile ? "0" : "-80px";
+        absolute.style.width = isMobile ? "100%" : "calc(100% + 160px)";
+      }
+
+      images.forEach((img) => {
+        if (img instanceof HTMLImageElement) {
+          img.style.objectPosition = isMobile ? "center" : "left center";
+        }
+      });
+    });
+  }
+</script>
+
+<ModalFull data_modal={banner} />

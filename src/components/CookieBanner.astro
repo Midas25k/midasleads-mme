@@ -1,0 +1,130 @@
+<script is:inline>
+  var CookieBanner = (function () {
+    return {
+      createCookieWhenBannerIsShown: false,
+      createCookieWhenAcceptIsClicked: true,
+      cookieDuration: 365, // Días antes de que expire la cookie
+      cookieName: 'cookieConsent', // Nombre de nuestra cookie principal
+      cookieValue: 'accepted', // Valor de la cookie principal
+
+      // Detalles de cookies adicionales
+      additionalCookies: [
+        { name: '_ga', value: 'GA1.2.1234567890.1234567890', duration: 730 }, // 2 años
+        { name: '_gid', value: 'GA1.2.0987654321.0987654321', duration: 1 }, // 1 día
+        { name: '_gat', value: '1', duration: 1 / 1440 }, // 1 minuto
+        { name: '_fbp', value: 'fb.1.1234567890123.1234567890', duration: 60 }, // 2 meses
+        { name: 'fr', value: 'facebook-value', duration: 60 }, // 2 meses
+        { name: 'NID', value: 'NID-value', duration: 180 }, // 6 meses
+      ],
+
+      _createDiv: function (html) {
+        var bodytag = document.getElementsByTagName('body')[0];
+        var div = document.createElement('div');
+        div.setAttribute('id', 'cookie-law');
+        div.innerHTML = html;
+        bodytag.insertBefore(div, bodytag.firstChild);
+        document.getElementsByTagName('body')[0].className += ' cookiebanner';
+      },
+
+      _createCookie: function (name, value, days) {
+        var expires;
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+          expires = '; expires=' + date.toUTCString();
+        } else {
+          expires = '';
+        }
+        document.cookie = name + '=' + value + expires + '; path=/';
+      },
+
+      _checkCookie: function (name) {
+        var nameEQ = name + '=';
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i].trim();
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      },
+
+      createAcceptCookie: function () {
+        // Crear cookie principal
+        CookieBanner._createCookie(CookieBanner.cookieName, CookieBanner.cookieValue, CookieBanner.cookieDuration);
+        // Crear cookies adicionales
+        CookieBanner.additionalCookies.forEach((cookie) => {
+          CookieBanner._createCookie(cookie.name, cookie.value, cookie.duration);
+        });
+      },
+
+      closeBanner: function () {
+        var element = document.getElementById('cookie-law');
+        if (element) {
+          element.parentNode.removeChild(element);
+        }
+      },
+
+      accept: function () {
+        CookieBanner.createAcceptCookie();
+        CookieBanner.closeBanner();
+      },
+
+      showUnlessAccepted: function (html) {
+        if (CookieBanner._checkCookie(CookieBanner.cookieName) !== CookieBanner.cookieValue) {
+          CookieBanner._createDiv(html);
+        }
+      },
+    };
+  })();
+
+  window.onload = function () {
+    var html =
+      '<div>' +
+      'Usamos cookies para mejorar nuestros servicios y mostrar publicidad relacionada con tus preferencias. Consulta nuestra <a href="/politicas-de-cookies" target="_blank">Política de Cookies</a>.' +
+      '</div>';
+    html += '<div><a href="javascript:void(0);" onclick="CookieBanner.accept();"><span>Aceptar</span></a></div>';
+    CookieBanner.showUnlessAccepted(html);
+  };
+</script>
+
+
+<style is:global>
+  #cookie-law {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 5%;
+    background-color: #e8e8e4;
+    width: 100%;
+    z-index: 999;
+    font-size: 14px;
+  }
+  #cookie-law > div {
+    color: rgb(79, 79, 79);
+  }
+  #cookie-law > div:first-child {
+    padding-right: 40px;
+  }
+  #cookie-law > div:first-child > a {
+    text-decoration: underline;
+  }
+  #cookie-law > div:last-child {
+    vertical-align: middle;
+  }
+  #cookie-law > div:last-child > a {
+    padding: 10px 20px;
+    background-color: rgb(243, 131, 4);
+    color: black;
+    border: 1px solid black;
+    text-decoration: none;
+  }
+
+  #cookie-law > div:last-child > a:hover {
+    background-color: rgb(168, 98, 18);
+    color: white;
+  }
+</style>

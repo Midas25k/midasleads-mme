@@ -1,0 +1,143 @@
+---
+import global_json from "../data/global.json";
+import Phone from "astro-heroicons/outline/Phone.astro";
+
+// IMPORTAMOS NUESTRO SIDEPANEL
+import SidePanel from "../components/SidePanel.astro";
+
+let global = global_json;
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+---
+
+<header class="bg-white">
+  <!-- Menú principal con "LLÁMANOS GRATIS" -->
+  <!-- Damos class="relative" al NAV para anclar el SidePanel -->
+  <nav class="relative px-4 mx-auto max-w-screen-2xl bg-white">
+    <div class="max-w-screen-2xl flex items-center mx-auto py-0">
+      <!-- Logo y Menú -->
+      <div class="flex items-center flex-grow">
+        <a href="/" class="flex items-center space-x-2">
+          <img
+            src="/img/logo.svg"
+            class="h-8 sm:h-10 md:h-12"
+            alt="MasMovil Negocios Logo"
+          />
+          <div class="inline-block w-0.5 self-stretch bg-zinc-950"></div>
+          <span
+            class="grid justify-items-center text-sm md:text-base bg-zinc-950 text-yellow_mm px-2 py-1"
+          >
+            <span class="text-sm font-bold">Distribuidor</span>
+            <span class="text-sm font-bold">Autorizado</span>
+          </span>
+        </a>
+
+        <!-- Menú de navegación (solo visible en LG+) -->
+        <div class="hidden w-full lg:block lg:w-auto ml-8" id="navbar-default">
+          <ul
+            class="font-medium flex flex-col p-4 lg:p-0 mt-[22px] border border-gray-100 
+                   bg-white absolute z-10 w-full left-0 rounded-b-lg lg:flex-row 
+                   lg:space-x-2 rtl:space-x-reverse lg:mt-0 lg:border-0 lg:relative 
+                   lg:w-[100%]"
+          >
+            <li>
+              <a
+                href="/fibra-movil"
+                class={`text-base font-bold text-zinc-950 block py-2 px-3 rounded hover:bg-yellow_mm hover:text-zinc-950 ${
+                  currentPath === "fibra-movil" ? "bg-yellow_mm text-zinc-950" : ""
+                }`}
+              >
+                Fibra y móvil
+              </a>
+            </li>
+            <li>
+              <a
+                href="/fibra"
+                class={`text-base font-bold text-zinc-950 block py-2 px-3 rounded hover:bg-yellow_mm hover:text-zinc-950 ${
+                  currentPath === "fibra" ? "bg-yellow_mm text-zinc-950" : ""
+                }`}
+              >
+                Fibra
+              </a>
+            </li>
+            <li>
+              <a
+                href="/movil"
+                class={`text-base font-bold text-zinc-950 block py-2 px-3 rounded hover:bg-yellow_mm hover:text-zinc-950 ${
+                  currentPath === "movil" ? "bg-yellow_mm text-zinc-950" : ""
+                }`}
+              >
+                Móvil
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Botón hamburguesa para móviles -->
+      <button
+        data-collapse-toggle="navbar-default"
+        type="button"
+        class="inline-flex items-center justify-center w-8 h-8 ml-auto text-sm text-gray-900 hover:text-zinc-950 lg:hidden"
+        aria-controls="navbar-default"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
+
+      <!-- Bloque "LLÁMANOS GRATIS" (solo visible en LG+) -->
+      <a
+        href={"tel:" + global.phone}
+        class="hidden lg:flex bg-green_mm items-center justify-center ml-4 px-6 py-2 group hover:no-underline"
+        style="min-width: 300px;"
+      >
+        <div class="flex flex-col items-center text-center w-full">
+          <div class="flex items-center justify-center space-x-1 text-white">
+            <span class="uppercase text-gray-150 text-sm font-bold">LLÁMANOS</span>
+            <span class="uppercase text-white text-sm font-bold">GRATIS</span>
+          </div>
+          <div class="flex items-center justify-center mt-1">
+            <Phone class="w-6 h-6 text-white mr-2 transition-colors duration-300 group-hover:text-gray-800" />
+            <span class="text-2xl font-extrabold text-white transition-colors duration-300 group-hover:text-gray-800">
+              {global.phone}
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- IMPORTAMOS EL SIDEPANEL -->
+    <SidePanel />
+
+  </nav>
+</header>
+
+<!-- Script para abrir/cerrar menú en móviles -->
+<script>
+  if (!import.meta.env.SSR) {
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.querySelector('[data-collapse-toggle="navbar-default"]');
+      const navMenu = document.getElementById("navbar-default");
+      
+      toggleBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("hidden");
+      });
+    });
+  }
+</script>

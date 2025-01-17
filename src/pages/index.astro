@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Banner from '../components/Banner.astro';
+import Product from '../components/Product.astro';
+import Ad from '../components/Ad.astro';
+import ModalSmall from '../components/ModalSmall.astro';
+import Notice from '../components/Notice.astro';
+import Question from '../components/Question.astro';
+import Footer from '../components/Footer.astro';
+
+import banners_json from '../data/banners.json';
+import products_json from '../data/products.json';
+import ads_json from '../data/ads.json';
+import notices_json from '../data/notices.json';
+
+let banner = banners_json.index;
+let products = products_json.index;
+let ads = ads_json.index;
+let notice = notices_json.index;
+---
+
+<Layout title="Operador de Fibra y Móvil">
+	<main>
+		<Banner {banner}/>
+		{products.uno && products.uno.title && (
+			<div class="flex flex-col items-center mx-auto max-w-screen-2xl px-8 py-8 space-y-6">
+				<span class="text-2xl sm:text-3xl text-center font-bold">
+					{products.uno.title}
+				</span>
+				<span class="text-lg text-center">
+					{products.uno.description}
+				</span>
+			</div>
+			<div class="flex flex-wrap justify-center gap-6 mx-auto max-w-screen-2xl px-8">
+				{products.uno.products.map((product) => (
+					<Product {product}/>
+				))}
+			</div>
+		)}
+		{products.dos && products.dos.title && (
+			<div class="flex flex-col items-center mx-auto max-w-screen-2xl px-8 py-8 space-y-6">
+				<span class="text-2xl sm:text-3xl text-center font-bold">
+					{products.dos.title}
+				</span>
+				<span class="text-lg text-center">
+					{products.dos.description}
+				</span>
+			</div>
+			<div class="flex flex-wrap justify-center gap-6 mx-auto max-w-screen-2xl px-8">
+				{products.dos.products.map((product) => (
+					<Product {product}/>
+				))}
+			</div>
+		)}
+		{products.tres && products.tres.title && (
+			<div class="flex flex-col items-center mx-auto max-w-screen-2xl px-8 py-8 space-y-6">
+				<span class="text-2xl sm:text-3xl text-center font-bold">
+					{products.tres.title}
+				</span>
+				<span class="text-lg text-center">
+					{products.tres.description}
+				</span>
+			</div>
+			<div class="flex flex-wrap justify-center gap-6 mx-auto max-w-screen-2xl px-8">
+				{products.tres.products.map((product) => (
+					<Product {product}/>
+				))}
+			</div>
+		)}
+		<div class="max-w-screen-xl mx-auto">
+			<div class="flex flex-col items-center px-8 py-8">
+				<span class="text-lg">
+					¡Contrata ya llamando de forma totalmente gratuita a nuestro centro de atención al cliente o si lo prefieres te llamamos nosotros!
+				</span>
+			</div>
+		</div>
+		<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto max-w-screen-xl px-4">
+			{ads.uno.map((ad) => (
+				<Ad {ad}/>
+			))}
+		</div>
+		{ads.uno.map((ad) => (
+			<ModalSmall data_modal={ad} />
+		))}
+		<!-- <div class="max-w-screen-xl mx-auto">
+			<div class="flex flex-col items-center px-8 py-8 space-y-6">
+				<span class="text-2xl font-bold">
+					Socio patrocinador oficial ​de la Selección Española de Fútbol masculino y femenino
+				</span>
+				<span class="text-lg">
+					Uniendo a fans, jugadores y sueños bajo una sola bandera. MasMovil Negocios acompaña a la selección masculina y femenina, asegurando que la pasión por el fútbol sea el eco que nos conecta a todos.
+				</span>
+			</div>
+		</div> -->
+		<!-- <div class="grid md:grid-cols-2 gap-6 mx-auto max-w-screen-xl px-8 pt-8">
+			{ads.dos.map((ad) => (
+				<Ad {ad}/>
+			))}
+		</div>
+		{ads.dos.map((ad) => (
+			<ModalSmall data_modal={ad} />
+		))} -->
+		{notice && (
+			<Notice {notice}/>
+		)}
+		<Question/>
+		<Footer/>
+	</main>
+</Layout>
