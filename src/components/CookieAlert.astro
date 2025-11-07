@@ -43,7 +43,7 @@
   window.addEventListener('load', function () {
     const cookieConsent = checkCookie('cookieConsent');
 
-    if (cookieConsent !== 'accepted' && cookieConsent !== 'rejected') {
+    if (cookieConsent !== 'accepted' && cookieConsent !== 'rejected' && cookieConsent !== 'configured') {
       Swal.fire({
         title: '',
         html: `
@@ -106,8 +106,6 @@
           const denyBtn = footer?.querySelector('.swal2-deny');
           const confirmBtn = footer?.querySelector('.swal2-confirm');
 
-          console.log('Botones encontrados:', { denyBtn, confirmBtn });
-
           // Ahora sí ocultar el footer
           if (footer) footer.style.display = 'none';
 
@@ -135,7 +133,6 @@
           configBtn.onclick = () => {
             createCookie('cookieConsent', 'configured', 365);
             Swal.close();
-            console.log('Cookies configuradas');
           };
 
           configButtonContainer.appendChild(configBtn);
@@ -193,11 +190,9 @@
           // Usuario aceptó las cookies
           createCookie('cookieConsent', 'accepted', 365);
           createTrackingCookies();
-          console.log('Cookies aceptadas');
         } else if (result.isDenied) {
           // Usuario rechazó las cookies
           createCookie('cookieConsent', 'rejected', 365);
-          console.log('Cookies rechazadas');
         }
       });
     }

@@ -1,24 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
+import globalData from '../data/global.json';
 ---
 
 <Layout title="Política de Cookies">
 	<main>
-		<div class="flex flex-col mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8 py-8 space-y-6">
+		<div class="flex flex-col mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8 py-2 space-y-2">
 
 			<!-- Hero Section con Comillas y Imagen -->
-			<div class="bg-yellow-400 rounded-lg p-8 md:p-12 mb-8">
+			<div class="rounded-lg p-3 md:p-6">
 				<div class="grid md:grid-cols-2 gap-8 items-center">
 					<!-- Columna Izquierda: Texto -->
-					<div class="relative px-8">
-						<!-- Comilla de Inicio -->
-						<img src="/img/quote.svg" alt="" class="quote-open" aria-hidden="true" />
-
-						<h1 class="font-bold text-3xl sm:text-4xl md:text-5xl text-black mb-4 relative z-10 inline-block pl-16">
+					<div class="relative">
+						<h1 class="font-bold text-3xl sm:text-4xl md:text-5xl text-black mb-4 relative z-10 text-center">
+							<!-- Comilla de Inicio -->
+							<img src="/img/quote.svg" alt="" class="absolute -top-2 -left-10 w-10 opacity-40 z-0 pointer-events-none sm:-left-12 sm:w-12 md:-top-3 md:-left-14 md:w-14 lg:-left-16 lg:w-16" aria-hidden="true" />
 							POLÍTICA DE COOKIES
 							<!-- Comilla de Cierre -->
-							<img src="/img/quote.svg" alt="" class="quote-close-inline" aria-hidden="true" />
+							<img src="/img/quote.svg" alt="" class="absolute -top-2 -right-10 w-10 opacity-40 z-0 pointer-events-none rotate-180 sm:-right-12 sm:w-12 md:-top-3 md:-right-14 md:w-14 lg:-right-16 lg:w-16" aria-hidden="true" />
 						</h1>
 
 						<p class="text-base sm:text-lg text-gray-800 leading-relaxed mb-6 mt-4">
@@ -50,8 +50,8 @@ import Footer from '../components/Footer.astro';
 			</div>
 
 			<!-- Índice de Navegación -->
-			<nav class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-				<ul class="space-y-2 text-blue-600">
+			<nav class="bg-white p-3">
+				<ul class="space-y-1 text-blue-600">
 					<li><a href="#quienes-somos" class="hover:underline">¿Quiénes somos?</a></li>
 					<li><a href="#que-son-cookies" class="hover:underline">¿Qué son las cookies?</a></li>
 					<li><a href="#informacion-consentimiento" class="hover:underline">Información y consentimiento</a></li>
@@ -61,109 +61,184 @@ import Footer from '../components/Footer.astro';
 			</nav>
 
 			<!-- Sección 1: ¿Quiénes somos? -->
-			<section id="quienes-somos" class="space-y-2 mb-4">
+			<section id="quienes-somos" class="space-y-2">
 				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 border-b-2 border-gray-300 pb-2">
 					1. ¿Quiénes somos?
 				</h2>
-				<p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-4 p-6">
+				<p class="text-base sm:text-lg text-gray-700 leading-relaxed p-3">
 					Esta Política de Cookies es aplicable a la página web accesible a través del Sitio Web
-					<a href="https://www.masmovil.es" class="text-blue-600 hover:underline">https://www.masmovil.es</a>,
-					la cual es titularidad de <strong>XFERA MÓVILES, S.A.U.</strong> (en adelante, "MásMóvil"),
-					con domicilio social en Avenida de la Vega, 1, Edificio Veganova 3, 28108, Alcobendas (Madrid),
-					provista de C.I.F. A-82528548 e inscrita en el Registro Mercantil de Madrid al Tomo 16.586,
-					Folio 181, Sección 8ª, Hoja M-282.676, Inscripción 1ª.
+					<a href={`https://${globalData.web_empresa}`} class="text-blue-600 hover:underline">https://{globalData.web_empresa}</a>,
+					la cual es titularidad de <strong>{globalData.nombre_empresa}</strong>,
+					con domicilio social en {globalData.direccion_empresa},
+					provista de C.I.F. {globalData.cif_empresa}.
+					Para cualquier consulta puede contactarnos en <a href={`mailto:${globalData.email_empresa}`} class="text-blue-600 hover:underline">{globalData.email_empresa}</a>.
 				</p>
 			</section>
 
 			<!-- Sección 2: ¿Qué son las cookies? -->
-			<section id="que-son-cookies" class="space-y-2 mb-4">
+			<section id="que-son-cookies" class="space-y-2">
 				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 border-b-2 border-gray-300 pb-2">
 					2. ¿Qué son las cookies?
 				</h2>
-				<p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-4 p-6">
-					Las cookies son archivos que se pueden descargar en su equipo a través de las páginas web.
-					Son herramientas que tienen un papel esencial para la prestación de numerosos servicios de
-					la sociedad de la información. Entre otros, permiten a una página web almacenar y recuperar
-					información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de
-					la información obtenida, se pueden utilizar para reconocer al usuario y mejorar el servicio ofrecido.
-				</p>
+				<div class="p-3 space-y-4">
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+						Las cookies son pequeños archivos de datos que se descargan en tu terminal desde el que accedas al Sitio Web y sirven para registrar ciertas interacciones de la navegación en el mismo, así como para almacenar y recuperar información sobre el uso del Sitio Web siendo utilizadas, entre otras cosas, para mejorar la calidad del Sitio Web y ofrecerte una mejor experiencia de usuario. Estos archivos se almacenan en el ordenador o terminal del usuario y contienen información, generalmente anónima que no es perjudicial para tu equipo. Se utilizan, por ejemplo, para recordar tus preferencias cuando vuelves a entrar en ese sitio web, como el idioma seleccionado en una navegación anterior, datos de acceso o personalización de la página.
+					</p>
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+						Las cookies también pueden ser utilizadas para registrar información anónima acerca de cómo un visitante utiliza una página web. Por ejemplo, desde qué otra página web ha accedido, o si ha utilizado un "banner" publicitario para llegar a ella.
+					</p>
+
+					<!-- Sección destacada "DICHO DE OTRA MANERA" -->
+					<div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
+						<h3 class="font-bold text-base text-gray-900 mb-2">DICHO DE OTRA MANERA...</h3>
+						<p class="text-sm text-gray-800 leading-relaxed">
+							Cuando das tu consentimiento para utilizar cookies estás agilizando tu uso de la web, guardando tus preferencias para que no tengas que recordarlas tú, y personalizando tu experiencia para mostrarte las cosas que de verdad te interesan.
+						</p>
+					</div>
+				</div>
 			</section>
 
 			<!-- Sección 3: Información y consentimiento -->
-			<section id="informacion-consentimiento" class="space-y-2 mb-4">
+			<section id="informacion-consentimiento" class="space-y-2">
 				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 border-b-2 border-gray-300 pb-2">
 					3. Información y consentimiento
 				</h2>
-				<div class="p-6">
-					<p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-4">
-						En cumplimiento del artículo 22.2 de la LSSI y la LOPDGDD, le informamos que este sitio web
-						utiliza cookies propias y de terceros con las siguientes finalidades:
+				<div class="p-3 space-y-4">
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+						Al acceder al Sitio Web te ofrecemos cierta información sobre el uso de esta tecnología a través del dispositivo o equipo que utilices para ello, solicitándote tu consentimiento para utilizar nuestras cookies.
 					</p>
-					<ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-700">
-						<li><strong>Cookies técnicas:</strong> esenciales para el funcionamiento del sitio</li>
-						<li><strong>Cookies analíticas:</strong> para análisis estadístico anónimo</li>
-						<li><strong>Cookies de publicidad:</strong> para personalización de contenidos publicitarios</li>
-					</ul>
-					<p class="text-base sm:text-lg text-gray-700 leading-relaxed mt-4">
-						El consentimiento para cookies no técnicas se obtendrá de forma expresa y granular mediante
-						nuestro panel de configuración.
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+						Ten en cuenta que algunas de las cookies que utilizamos pueden ser necesarias para que nuestro sitio web funcione correctamente y que no pueden denegarse, ya que, podrías tener problemas para acceder o utilizar nuestro sitio web correctamente. Con respecto al resto de cookies, por medio del sistema o panel de configuración, puedes elegir entre aceptar o rechazar todas las cookies o hacerlo de forma granular y administrar tus preferencias.
+					</p>
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+						Asimismo, puedes retirar tu consentimiento al uso de cookies en cualquier momento a través de la configuración de tu navegador o cambiando tus preferencias en el panel de configuración.
 					</p>
 				</div>
 			</section>
 
 			<!-- Panel de Configuración Granular -->
-			<section id="cookies-utilizamos" class="space-y-2 mb-4">
+			<section id="cookies-utilizamos" class="space-y-2">
 				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 border-b-2 border-gray-300 pb-2">
 					4. Cookies que utilizamos
 				</h2>
 
-				<!-- Cookies Técnicas -->
-				<div class="p-6 mb-4">
-					<h3 class="font-bold text-lg sm:text-xl text-gray-800 mb-2">COOKIES TÉCNICAS (NECESARIAS)</h3>
-					<p class="text-sm sm:text-base text-gray-700 mb-1">
-						<span class="font-semibold">Siempre activas</span>
+				<div class="p-3 space-y-4">
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+						Utilizamos las cookies estrictamente necesarias y esenciales para analizar nuestros servicios y/o mostrarte publicidad personalizada en base a un perfil elaborado a partir de tus hábitos de navegación en el Sitio Web, utilizando áreas seguras, opciones personalizadas, etc.
 					</p>
-					<p class="text-sm sm:text-base text-gray-700 mb-2">
-						<strong>Finalidad:</strong> Funcionalidad básica del sitio - No se pueden desactivar
-					</p>
-					<ul class="list-none pl-4 space-y-1 text-sm text-gray-600">
-						<li>Gestión de sesión de usuario</li>
-						<li>Seguridad y prevención de fraudes</li>
-						<li>Carrito de compra y procesos de contratación</li>
-					</ul>
-				</div>
 
-				<!-- Cookies Analíticas -->
-				<div class="p-6 mb-4">
-					<h3 class="font-bold text-lg sm:text-xl text-gray-800 mb-2">COOKIES ANALÍTICAS</h3>
-					<p class="text-sm sm:text-base text-gray-700 mb-2">
-						<strong>Finalidad:</strong> Análisis de tráfico y comportamiento anónimo
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+						En concreto, y según la entidad, su duración y su finalidad, {globalData.nombre_empresa} utiliza en el Sitio Web los siguientes tipos de cookies:
 					</p>
-					<ul class="list-none pl-4 space-y-1 text-sm text-gray-600">
-						<li>Google Analytics (_ga, _gid, _gat)</li>
-						<li>Estadísticas de uso y mejora de servicios</li>
-					</ul>
-				</div>
 
-				<!-- Cookies de Publicidad -->
-				<div class="p-6 mb-4">
-					<h3 class="font-bold text-lg sm:text-xl text-gray-800 mb-2">COOKIES DE PUBLICIDAD</h3>
-					<p class="text-sm sm:text-base text-gray-700 mb-2">
-						<strong>Finalidad:</strong> Publicidad personalizada en redes sociales y terceros
+					<!-- En función de la entidad que las gestione -->
+					<div class="bg-white border border-gray-300 rounded-lg p-3 shadow-sm">
+						<h3 class="font-bold text-xl text-gray-900 mb-4">En función de la entidad que las gestione:</h3>
+
+						<div class="space-y-4">
+							<div>
+								<h4 class="font-semibold text-lg text-gray-800 mb-2">Cookies propias:</h4>
+								<p class="text-base text-gray-700 leading-relaxed">
+									Son aquellas que se envían al equipo terminal del usuario desde un equipo o dominio gestionado por el titular de la página web o editor y desde la que se presta el servicio solicitado por el usuario.
+								</p>
+							</div>
+
+							<div>
+								<h4 class="font-semibold text-lg text-gray-800 mb-2">Cookies de tercero:</h4>
+								<p class="text-base text-gray-700 leading-relaxed">
+									Son aquellas que se envían al equipo terminal del usuario desde un equipo o dominio que no es gestionado por el editor, sino por otra entidad que trata los datos obtenidos a través de las cookies. En el caso de que las cookies sean servidas desde un equipo o dominio gestionado por el propio editor, pero la información que se recoja mediante estas sea gestionada por un tercero, no pueden ser consideradas como cookies propias si el tercero las utiliza para sus propias finalidades como la mejora de los servicios que presta o la prestación de servicios de carácter publicitario a favor de otras entidades.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- En función de su duración -->
+					<div class="bg-white border border-gray-300 rounded-lg p-3 shadow-sm">
+						<h3 class="font-bold text-xl text-gray-900 mb-4">En función de su duración:</h3>
+
+						<div class="space-y-4">
+							<div>
+								<h4 class="font-semibold text-lg text-gray-800 mb-2">Cookies de sesión:</h4>
+								<p class="text-base text-gray-700 leading-relaxed">
+									Son aquellas cookies temporales que serán almacenadas en el navegador hasta que se abandone la página web.
+								</p>
+							</div>
+
+							<div>
+								<h4 class="font-semibold text-lg text-gray-800 mb-2">Cookies persistentes:</h4>
+								<p class="text-base text-gray-700 leading-relaxed">
+									Estas cookies se almacenan en el equipo hasta su fecha de expiración, que puede variar en función de la cookie concreta, y se leen cuando el usuario accede a nuestra página.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- En función de su finalidad -->
+					<div class="bg-white border border-gray-300 rounded-lg p-3 shadow-sm">
+						<h3 class="font-bold text-xl text-gray-900 mb-4">En función de su finalidad:</h3>
+
+						<div class="space-y-4">
+							<div>
+								<h4 class="font-semibold text-lg text-gray-800 mb-2">Cookies técnicas o necesarias:</h4>
+								<p class="text-base text-gray-700 leading-relaxed">
+									Son aquellas que permiten la gestión operativa de la web y la habilitación de sus funciones y servicios, garantizado el correcto funcionamiento del Sitio Web y sus elementos, así como la seguridad del mismo. Estas cookies sirven por ejemplo, para mantener la sesión, gestionar el tiempo de respuesta, etc.
+								</p>
+							</div>
+
+							<div>
+								<h4 class="font-semibold text-lg text-gray-800 mb-2">Cookies de preferencias o personalización:</h4>
+								<p class="text-base text-gray-700 leading-relaxed">
+									Permiten recordar la información relevante para poder diferenciar a los usuarios y ofrecerles una experiencia personal, así como crear un perfil basado en sus hábitos de navegación.
+								</p>
+							</div>
+
+							<div>
+								<h4 class="font-semibold text-lg text-gray-800 mb-2">Cookies de análisis o medición:</h4>
+								<p class="text-base text-gray-700 leading-relaxed mb-3">
+									Permiten el seguimiento y análisis del comportamiento de los usuarios del Sitio web de forma estadística, incluyendo la cuantificación de los impactos de los anuncios.
+								</p>
+
+								<!-- Sección destacada "LAS COOKIES DE ANÁLISIS" -->
+								<div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
+									<h5 class="font-bold text-base text-gray-900 mb-2">LAS COOKIES DE ANÁLISIS...</h5>
+									<p class="text-sm text-gray-800 leading-relaxed">
+										Nos ayudan a saber las cosas que estamos haciendo bien, los intereses de los usuarios, y también los errores que debemos arreglar para mejorar el servicio que ofrecemos.
+									</p>
+								</div>
+							</div>
+
+							<div>
+								<h4 class="font-semibold text-lg text-gray-800 mb-2">Cookies publicitarias o de marketing:</h4>
+								<p class="text-base text-gray-700 leading-relaxed">
+									Permiten la gestión de los espacios publicitarios existentes en una página en base a criterios como el contenido editado o la frecuencia en la que se muestran los anuncios.
+								</p>
+							</div>
+
+							<div>
+								<h4 class="font-semibold text-lg text-gray-800 mb-2">Cookies de publicidad comportamental:</h4>
+								<p class="text-base text-gray-700 leading-relaxed">
+									Permiten la gestión de los espacios publicitarios existentes en la página de manera que a cada Usuario se le ofrezca contenido publicitario acorde a sus hábitos de navegación y a sus preferencias, así como otra información que facilite durante la navegación.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed font-semibold">
+						En el caso de que optes por no aceptar las cookies, no descargaremos ninguna, salvo las cookies técnicas, ya que son necesarias para el correcto funcionamiento del Sitio Web.
 					</p>
-					<ul class="list-none pl-4 space-y-1 text-sm text-gray-600">
-						<li>Facebook (_fbp, fr)</li>
-						<li>Google Ads (NID)</li>
-						<li>Remarketing y segmentación</li>
-					</ul>
 				</div>
 			</section>
 
-			<!-- Sección 5: Tabla de Cookies Actualizada -->
+			<!-- Sección 5: Nuestras cookies -->
 			<section class="mb-4">
 				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 mb-3 border-b-2 border-gray-300 pb-2">
-					5. Tabla de Cookies Actualizada - LOPDGDD Compliant
+					5. Nuestras cookies
 				</h2>
+				<div class="p-3">
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+						A continuación te facilitamos un listado que incluye las cookies que utilizamos en el Sitio Web indicando el tipo, origen, finalidad y un enlace para que puedas acceder a los distintos sitios web de procedencia.
+					</p>
+				</div>
 				<div class="overflow-x-auto">
 					<table class="border-collapse border border-slate-500 w-full text-sm sm:text-base">
 						<thead>
@@ -260,20 +335,83 @@ import Footer from '../components/Footer.astro';
 				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 border-b-2 border-gray-300 pb-2">
 					6. ¿Cómo cambiar la configuración de las cookies o revocar el consentimiento?
 				</h2>
-				<div class="p-6">
-					<p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-4">
+				<div class="p-3 space-y-4">
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed">
 						Puede gestionar sus preferencias en cualquier momento accediendo a nuestro
-						<strong>Panel de Configuración de Cookies</strong> disponible en esta página.
+						<strong>Panel de Configuración de Cookies</strong> disponible en esta página haciendo clic en el botón "CONFIGURAR".
 					</p>
-					<p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-4">
+
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed">
 						El consentimiento tendrá una duración máxima de <strong>24 meses</strong>, tras los cuales se le solicitará
 						renovarlo. Puede revocar su consentimiento en cualquier momento mediante las opciones de
 						configuración o eliminando las cookies desde su navegador.
 					</p>
-					<div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-4">
-						<p class="text-sm sm:text-base text-gray-700">
+
+					<!-- Subsección: ¿Qué pasa si bloqueo las cookies? -->
+					<div class="bg-white border border-gray-300 rounded-lg p-3 shadow-sm">
+						<h3 class="font-bold text-xl text-gray-900 mb-4">¿Qué pasa si bloqueo o rechazo las cookies?</h3>
+
+						<div class="space-y-4">
+							<p class="text-base text-gray-700 leading-relaxed">
+								Si decides bloquear o rechazar las cookies, debes tener en cuenta las siguientes consecuencias:
+							</p>
+
+							<div class="space-y-3">
+								<div class="flex items-start gap-3">
+									<span class="text-green-600 font-bold text-xl mt-1">✓</span>
+									<div>
+										<h4 class="font-semibold text-gray-800 mb-1">Cookies técnicas o necesarias:</h4>
+										<p class="text-base text-gray-700">
+											<strong>No se pueden bloquear.</strong> Son imprescindibles para el funcionamiento básico del sitio web. Sin ellas, no podrás navegar correctamente, acceder a áreas seguras, o utilizar funciones esenciales como el carrito de compra o el proceso de contratación.
+										</p>
+									</div>
+								</div>
+
+								<div class="flex items-start gap-3">
+									<span class="text-yellow-600 font-bold text-xl mt-1">⚠</span>
+									<div>
+										<h4 class="font-semibold text-gray-800 mb-1">Cookies analíticas:</h4>
+										<p class="text-base text-gray-700">
+											Si las bloqueas, no podremos analizar cómo utilizas nuestro sitio web, lo que nos impedirá mejorar la experiencia de usuario y detectar problemas técnicos. Tu navegación seguirá siendo funcional, pero no contribuirás a la mejora del servicio.
+										</p>
+									</div>
+								</div>
+
+								<div class="flex items-start gap-3">
+									<span class="text-blue-600 font-bold text-xl mt-1">ℹ</span>
+									<div>
+										<h4 class="font-semibold text-gray-800 mb-1">Cookies de publicidad:</h4>
+										<p class="text-base text-gray-700">
+											Si las rechazas, seguirás viendo publicidad, pero esta no estará personalizada según tus intereses. Verás anuncios genéricos que pueden no ser relevantes para ti. Además, es posible que veas el mismo anuncio repetidamente.
+										</p>
+									</div>
+								</div>
+
+								<div class="flex items-start gap-3">
+									<span class="text-purple-600 font-bold text-xl mt-1">⚙</span>
+									<div>
+										<h4 class="font-semibold text-gray-800 mb-1">Cookies de preferencias:</h4>
+										<p class="text-base text-gray-700">
+											Si las bloqueas, el sitio web no recordará tus preferencias (idioma, región, configuraciones personalizadas), por lo que tendrás que configurarlas cada vez que visites la página.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Advertencia importante -->
+					<div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
+						<p class="text-sm text-gray-800 leading-relaxed">
 							<strong>⚠️ Importante:</strong> Si rechaza las cookies no técnicas, algunas funcionalidades del sitio
-							pueden verse limitadas.
+							pueden verse limitadas, pero el sitio web seguirá siendo accesible y funcional para las operaciones básicas.
+						</p>
+					</div>
+
+					<!-- Nota sobre la configuración del navegador -->
+					<div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
+						<p class="text-sm text-gray-800 leading-relaxed">
+							<strong>💡 Nota:</strong> También puedes gestionar las cookies directamente desde la configuración de tu navegador. Consulta la sección 8 de esta política para obtener instrucciones específicas según tu navegador.
 						</p>
 					</div>
 				</div>
@@ -284,7 +422,7 @@ import Footer from '../components/Footer.astro';
 				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 border-b-2 border-gray-300 pb-2">
 					7. Derechos del Usuario
 				</h2>
-				<div class="p-6">
+				<div class="p-3">
 					<p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-4">
 						De acuerdo con la LOPDGDD, tiene derecho a:
 					</p>
@@ -296,8 +434,8 @@ import Footer from '../components/Footer.astro';
 						<li><strong>Portar</strong> sus datos a otro responsable</li>
 					</ul>
 					<p class="text-base sm:text-lg text-gray-700 leading-relaxed mt-4">
-						Para ejercer estos derechos, contacte con nuestro DPO:
-						<a href="mailto:dpo@empresa.com" class="text-blue-600 hover:underline font-semibold">dpo@empresa.com</a>
+						Para ejercer estos derechos, contacte con nosotros:
+						<a href={`mailto:${globalData.email_empresa}`} class="text-blue-600 hover:underline font-semibold">{globalData.email_empresa}</a>
 					</p>
 				</div>
 			</section>
@@ -367,6 +505,135 @@ import Footer from '../components/Footer.astro';
 		</div>
 		<Footer/>
 	</main>
+
+	<!-- Modal de Configuración de Cookies -->
+	<div id="cookie-config-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+		<div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+			<!-- Header del Modal -->
+			<div class="flex items-center gap-4 p-6 border-b border-gray-200">
+				<div class="bg-yellow-400 p-2 rounded">
+					<img src="/img/logo.png" alt={globalData.nombre_empresa} class="w-10 h-10 object-contain">
+				</div>
+				<h2 class="text-2xl font-bold text-gray-900">CONFIGURACIÓN DE COOKIES</h2>
+				<button id="close-modal-btn" class="ml-auto text-gray-400 hover:text-gray-600">
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+
+			<!-- Contenido del Modal (scrollable) -->
+			<div class="flex-1 overflow-y-auto">
+				<div class="grid md:grid-cols-[250px_1fr] gap-0">
+					<!-- Sidebar Izquierdo -->
+					<div class="bg-gray-50 border-r border-gray-200 p-6">
+						<nav class="space-y-2">
+							<button data-section="modal-privacy" class="sidebar-link w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 rounded bg-gray-200">
+								Su privacidad
+							</button>
+							<button data-section="modal-necessary" class="sidebar-link w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 rounded">
+								Cookies estrictamente necesarias
+							</button>
+							<button data-section="modal-advertising" class="sidebar-link w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 rounded">
+								Propias y de terceros para servir publicidad
+							</button>
+							<button data-section="modal-personalization" class="sidebar-link w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 rounded">
+								Cookies de personalización
+							</button>
+							<button data-section="modal-analytics" class="sidebar-link w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 rounded">
+								Cookies de análisis o medición
+							</button>
+						</nav>
+					</div>
+
+					<!-- Contenido Principal -->
+					<div class="p-6">
+						<!-- Su privacidad -->
+						<section id="modal-privacy" class="modal-section">
+							<h3 class="text-xl font-bold text-gray-900 mb-4">Su privacidad</h3>
+
+							<!-- Mensaje de alerta si el usuario rechazó las cookies -->
+							<div id="rejected-cookies-alert" class="hidden bg-red-50 border-l-4 border-red-500 p-4 mb-4">
+								<div class="flex items-start">
+									<svg class="w-6 h-6 text-red-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+									</svg>
+									<div>
+										<p class="font-semibold text-red-800 mb-1">Has rechazado las cookies previamente</p>
+										<p class="text-sm text-red-700">Actualmente todas las cookies no esenciales están bloqueadas. Puedes cambiar tu configuración a continuación y guardar tus nuevas preferencias.</p>
+									</div>
+								</div>
+							</div>
+
+							<p class="text-gray-700 leading-relaxed">
+								Cuando visita cualquier sitio web, el mismo podría obtener o guardar información en su navegador, generalmente mediante el uso de cookies. Esta información puede ser acerca de usted, sus preferencias o su dispositivo, y se usa principalmente para que el sitio funcione según lo esperado. Por lo general, la información no lo identifica directamente, pero puede proporcionarle una experiencia web más personalizada. Ya que respetamos su derecho a la privacidad, usted puede escoger no permitirnos usar ciertas cookies. Haga clic en los encabezados de cada categoría para saber más y cambiar nuestras configuraciones predeterminadas. Sin embargo, el bloqueo de algunos tipos de cookies puede afectar su experiencia en el sitio y los servicios que podemos ofrecer.
+							</p>
+						</section>
+
+						<!-- Cookies estrictamente necesarias -->
+						<section id="modal-necessary" class="modal-section hidden">
+							<div class="flex items-center justify-between mb-4">
+								<h3 class="text-xl font-bold text-gray-900">Cookies estrictamente necesarias</h3>
+								<span class="text-sm font-semibold text-gray-500">Siempre activas</span>
+							</div>
+							<p class="text-gray-700 leading-relaxed">
+								Estas cookies son esenciales para el funcionamiento del sitio web y no se pueden desactivar. Generalmente se establecen en respuesta a acciones realizadas por usted, como establecer sus preferencias de privacidad, iniciar sesión o completar formularios.
+							</p>
+						</section>
+
+						<!-- Cookies de publicidad -->
+						<section id="modal-advertising" class="modal-section hidden">
+							<div class="flex items-center justify-between mb-4">
+								<h3 class="text-xl font-bold text-gray-900">Propias y de terceros para servir publicidad</h3>
+								<label class="relative inline-flex items-center cursor-pointer">
+									<input type="checkbox" id="advertising-toggle" class="sr-only peer">
+									<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+								</label>
+							</div>
+							<p class="text-gray-700 leading-relaxed">
+								Estas cookies permiten mostrar publicidad personalizada basada en sus hábitos de navegación y preferencias.
+							</p>
+						</section>
+
+						<!-- Cookies de personalización -->
+						<section id="modal-personalization" class="modal-section hidden">
+							<div class="flex items-center justify-between mb-4">
+								<h3 class="text-xl font-bold text-gray-900">Cookies de personalización</h3>
+								<label class="relative inline-flex items-center cursor-pointer">
+									<input type="checkbox" id="personalization-toggle" class="sr-only peer">
+									<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+								</label>
+							</div>
+							<p class="text-gray-700 leading-relaxed">
+								Estas cookies permiten que el sitio web recuerde las elecciones que hace para proporcionarle funcionalidades mejoradas y contenido personalizado.
+							</p>
+						</section>
+
+						<!-- Cookies de análisis -->
+						<section id="modal-analytics" class="modal-section hidden">
+							<div class="flex items-center justify-between mb-4">
+								<h3 class="text-xl font-bold text-gray-900">Cookies de análisis o medición</h3>
+								<label class="relative inline-flex items-center cursor-pointer">
+									<input type="checkbox" id="analytics-toggle" class="sr-only peer">
+									<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+								</label>
+							</div>
+							<p class="text-gray-700 leading-relaxed">
+								Estas cookies nos permiten contar las visitas y fuentes de tráfico para poder medir y mejorar el rendimiento de nuestro sitio.
+							</p>
+						</section>
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer del Modal -->
+			<div class="border-t border-gray-200 p-6 bg-gray-50">
+				<button id="save-config-btn" class="w-full bg-black hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg transition">
+					GUARDAR CONFIGURACIÓN
+				</button>
+			</div>
+		</div>
+	</div>
 </Layout>
 
 <script>
@@ -397,36 +664,127 @@ import Footer from '../components/Footer.astro';
 		return null;
 	}
 
+	// Función para verificar si el usuario rechazó las cookies
+	function checkIfRejected(): boolean {
+		const cookieConsent = getCookie('cookieConsent');
+		return cookieConsent === 'rejected';
+	}
+
+	// Función para actualizar la cookie cookieConsent
+	function updateCookieConsent(status: 'accepted' | 'rejected' | 'configured') {
+		setCookie('cookieConsent', status, 365);
+	}
+
+	// ⚡ APLICAR PREFERENCIAS AL CARGAR LA PÁGINA
+	function initializeCookies() {
+		const savedPrefs = localStorage.getItem('cookiePreferences');
+		if (savedPrefs) {
+			try {
+				const prefs: CookiePreferences = JSON.parse(savedPrefs);
+				applyPreferencesFromManager(prefs);
+			} catch (e) {
+				// Error al cargar preferencias
+			}
+		}
+	}
+
 	// Función para guardar preferencias
 	function savePreferences(preferences: CookiePreferences) {
 		localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
+		localStorage.setItem('cookieBannerDismissed', 'true');
 		setCookie('cookieConsent', 'configured', 730); // 24 meses
 
-		// Aplicar preferencias
-		if (preferences.analytics) {
-			loadAnalyticsCookies();
-		}
-		if (preferences.advertising) {
-			loadAdvertisingCookies();
-		}
+		// Aplicar preferencias usando el sistema de gestión de cookies
+		applyPreferencesFromManager(preferences);
 
-		showNotification('✅ Preferencias guardadas correctamente', 'success');
+		showNotification('Preferencias guardadas correctamente', 'success');
 	}
 
-	// Función para cargar cookies analíticas
-	function loadAnalyticsCookies() {
-		// Aquí se cargarían los scripts de Google Analytics
-		console.log('Google Analytics activado');
+	// Función para aplicar preferencias (carga real de scripts)
+	function applyPreferencesFromManager(preferences: CookiePreferences) {
+		// COOKIES DE ANÁLISIS (Google Analytics)
+		if (preferences.analytics) {
+			loadGoogleAnalytics();
+		} else {
+			removeAnalyticsCookies();
+		}
+
+		// COOKIES DE PUBLICIDAD (Facebook Pixel, Google Ads)
+		if (preferences.advertising) {
+			loadAdvertisingScripts();
+		} else {
+			removeAdvertisingCookies();
+		}
+	}
+
+	// Cargar Google Analytics REAL
+	function loadGoogleAnalytics() {
+		// Reemplaza 'G-XXXXXXXXXX' con tu ID real de Google Analytics
+		const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+
+		// Cargar el script de Google Analytics
+		const script = document.createElement('script');
+		script.async = true;
+		script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+		document.head.appendChild(script);
+
+		// Inicializar Google Analytics
+		window.dataLayer = window.dataLayer || [];
+		function gtag(...args: any[]) {
+			window.dataLayer.push(args);
+		}
+		gtag('js', new Date());
+		gtag('config', GA_MEASUREMENT_ID);
+
+		// Crear cookies de demostración
 		setCookie('_ga', 'GA1.2.' + Math.random(), 730);
 		setCookie('_gid', 'GA1.2.' + Math.random(), 1);
+		setCookie('_gat', 'GA1.2.' + Math.random(), 1);
 	}
 
-	// Función para cargar cookies de publicidad
-	function loadAdvertisingCookies() {
-		// Aquí se cargarían los scripts de publicidad
-		console.log('Cookies de publicidad activadas');
-		setCookie('_fbp', 'fb.1.' + Date.now(), 60);
-		setCookie('NID', 'NID-' + Math.random(), 180);
+	// Cargar scripts de publicidad REALES
+	function loadAdvertisingScripts() {
+		// Facebook Pixel
+		const FB_PIXEL_ID = '1234567890'; // Reemplaza con tu ID real
+
+		// Crear cookies de demostración PRIMERO
+		setCookie('_fbp', 'fb.1.' + Date.now(), 90);
+		setCookie('_fbc', 'fb.1.' + Date.now(), 90);
+		setCookie('fr', 'fb.fr.' + Date.now(), 90);
+
+		// Cargar Facebook Pixel (opcional, solo si tienes un ID real)
+		if (FB_PIXEL_ID !== '1234567890') {
+			const fbScript = document.createElement('script');
+			fbScript.innerHTML = `
+				!function(f,b,e,v,n,t,s)
+				{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+				n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+				if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+				n.queue=[];t=b.createElement(e);t.async=!0;
+				t.src=v;s=b.getElementsByTagName(e)[0];
+				s.parentNode.insertBefore(t,s)}(window, document,'script',
+				'https://connect.facebook.net/en_US/fbevents.js');
+				fbq('init', '${FB_PIXEL_ID}');
+				fbq('track', 'PageView');
+			`;
+			document.head.appendChild(fbScript);
+		}
+	}
+
+	// Eliminar cookies de análisis
+	function removeAnalyticsCookies() {
+		const cookiesToDelete = ['_ga', '_gid', '_gat', '_gat_gtag_UA_'];
+		cookiesToDelete.forEach(name => {
+			document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+		});
+	}
+
+	// Eliminar cookies de publicidad
+	function removeAdvertisingCookies() {
+		const cookiesToDelete = ['_fbp', '_fbc', 'fr', '_gcl_au'];
+		cookiesToDelete.forEach(name => {
+			document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+		});
 	}
 
 	// Función para mostrar notificaciones
@@ -463,18 +821,182 @@ import Footer from '../components/Footer.astro';
 		}, 3000);
 	}
 
+	// ⚡ INICIALIZAR AL CARGAR LA PÁGINA
+	initializeCookies();
+
 	// Event Listeners
 	document.addEventListener('DOMContentLoaded', () => {
 		const acceptAllBtn = document.getElementById('accept-all-btn');
 		const rejectAllBtn = document.getElementById('reject-all-btn');
 		const configureCookiesBtn = document.getElementById('configure-cookies-btn');
 		const exitBtn = document.getElementById('exit-btn');
+		const cookieConfigModal = document.getElementById('cookie-config-modal');
+		const closeModalBtn = document.getElementById('close-modal-btn');
+		const saveConfigBtn = document.getElementById('save-config-btn');
+		const advertisingToggle = document.getElementById('advertising-toggle') as HTMLInputElement;
+		const personalizationToggle = document.getElementById('personalization-toggle') as HTMLInputElement;
+		const analyticsToggle = document.getElementById('analytics-toggle') as HTMLInputElement;
 
-		// Botón "CONFIGURAR COOKIES" - Scroll a la sección de cookies
+		// 🔒 Variables para detectar cambios sin guardar
+		let hasUnsavedChanges = false;
+		let initialTogglesState = {
+			analytics: false,
+			advertising: false,
+			personalization: false
+		};
+
+		// Función para cambiar de sección en el modal
+		function showModalSection(sectionId: string) {
+			// Ocultar todas las secciones
+			const allSections = document.querySelectorAll('.modal-section');
+			allSections.forEach(section => section.classList.add('hidden'));
+
+			// Mostrar la sección seleccionada
+			const targetSection = document.getElementById(sectionId);
+			if (targetSection) {
+				targetSection.classList.remove('hidden');
+			}
+
+			// Actualizar estado activo en el sidebar
+			const allButtons = document.querySelectorAll('.sidebar-link');
+			allButtons.forEach(button => {
+				button.classList.remove('bg-gray-200');
+			});
+			const activeButton = document.querySelector(`button[data-section="${sectionId}"]`);
+			if (activeButton) {
+				activeButton.classList.add('bg-gray-200');
+			}
+		}
+
+		// Botón "CONFIGURAR COOKIES" - Abrir modal
 		configureCookiesBtn?.addEventListener('click', () => {
-			const cookiesSection = document.getElementById('cookies-utilizamos');
-			if (cookiesSection) {
-				cookiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			if (cookieConfigModal) {
+				cookieConfigModal.classList.remove('hidden');
+				// Mostrar la primera sección por defecto
+				showModalSection('modal-privacy');
+
+				// Verificar si el usuario rechazó las cookies previamente
+				const rejectedAlert = document.getElementById('rejected-cookies-alert');
+				if (checkIfRejected() && rejectedAlert) {
+					rejectedAlert.classList.remove('hidden');
+				} else if (rejectedAlert) {
+					rejectedAlert.classList.add('hidden');
+				}
+
+				// Cargar preferencias actuales
+				const savedPrefs = localStorage.getItem('cookiePreferences');
+				if (savedPrefs) {
+					const prefs: CookiePreferences = JSON.parse(savedPrefs);
+					if (advertisingToggle) advertisingToggle.checked = prefs.advertising;
+					if (personalizationToggle) personalizationToggle.checked = prefs.advertising; // Usar advertising como personalización
+					if (analyticsToggle) analyticsToggle.checked = prefs.analytics;
+				}
+
+				// 🔒 Guardar estado inicial de los toggles
+				initialTogglesState = {
+					analytics: analyticsToggle?.checked || false,
+					advertising: advertisingToggle?.checked || false,
+					personalization: personalizationToggle?.checked || false
+				};
+				hasUnsavedChanges = false;
+			}
+		});
+
+		// 🔒 Detectar cambios en los toggles
+		[advertisingToggle, personalizationToggle, analyticsToggle].forEach(toggle => {
+			toggle?.addEventListener('change', () => {
+				const currentState = {
+					analytics: analyticsToggle?.checked || false,
+					advertising: advertisingToggle?.checked || false,
+					personalization: personalizationToggle?.checked || false
+				};
+
+				// Verificar si hay cambios
+				hasUnsavedChanges =
+					currentState.analytics !== initialTogglesState.analytics ||
+					currentState.advertising !== initialTogglesState.advertising ||
+					currentState.personalization !== initialTogglesState.personalization;
+			});
+		});
+
+		// Event listeners para los botones del sidebar
+		const sidebarButtons = document.querySelectorAll('.sidebar-link');
+		sidebarButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				const sectionId = button.getAttribute('data-section');
+				if (sectionId) {
+					showModalSection(sectionId);
+				}
+			});
+		});
+
+		// 🔒 Función para cerrar el modal con confirmación
+		async function closeModalWithConfirmation() {
+			if (hasUnsavedChanges) {
+				// Usar SweetAlert2 para una mejor UX
+				const result = await Swal.fire({
+					title: '⚠️ Cambios sin guardar',
+					html: `
+						<p class="text-gray-700 mb-3">Has modificado tu configuración de cookies pero no has guardado los cambios.</p>
+						<p class="text-gray-600 text-sm">Si cierras ahora, se perderán tus preferencias.</p>
+					`,
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonColor: '#ef4444',
+					cancelButtonColor: '#3b82f6',
+					confirmButtonText: '🗑️ Cerrar sin guardar',
+					cancelButtonText: '⬅️ Volver a configurar',
+					reverseButtons: true,
+					customClass: {
+						popup: 'rounded-xl',
+						title: 'text-xl font-bold',
+						confirmButton: 'px-6 py-3 rounded-lg font-semibold',
+						cancelButton: 'px-6 py-3 rounded-lg font-semibold'
+					}
+				});
+
+				if (!result.isConfirmed) {
+					return false;
+				}
+			}
+
+			if (cookieConfigModal) {
+				cookieConfigModal.classList.add('hidden');
+				hasUnsavedChanges = false;
+			}
+			return true;
+		}
+
+		// Cerrar modal con botón X
+		closeModalBtn?.addEventListener('click', () => {
+			closeModalWithConfirmation();
+		});
+
+		// Cerrar modal al hacer clic fuera
+		cookieConfigModal?.addEventListener('click', (e) => {
+			if (e.target === cookieConfigModal) {
+				closeModalWithConfirmation();
+			}
+		});
+
+		// Guardar configuración del modal
+		saveConfigBtn?.addEventListener('click', () => {
+			const preferences: CookiePreferences = {
+				necessary: true,
+				analytics: analyticsToggle?.checked || false,
+				advertising: advertisingToggle?.checked || false,
+				timestamp: Date.now()
+			};
+			savePreferences(preferences);
+
+			// Actualizar la cookie cookieConsent a "configured"
+			updateCookieConsent('configured');
+
+			// Resetear flag de cambios sin guardar
+			hasUnsavedChanges = false;
+
+			if (cookieConfigModal) {
+				cookieConfigModal.classList.add('hidden');
 			}
 		});
 
@@ -492,6 +1014,7 @@ import Footer from '../components/Footer.astro';
 				timestamp: Date.now()
 			};
 			savePreferences(preferences);
+			updateCookieConsent('accepted');
 		});
 
 		// Rechazar cookies no esenciales (solo mantener las necesarias)
@@ -503,56 +1026,23 @@ import Footer from '../components/Footer.astro';
 				timestamp: Date.now()
 			};
 			savePreferences(preferences);
+			updateCookieConsent('rejected');
 		});
 	});
+
+	// Declaraciones de tipos para TypeScript
+	declare global {
+		interface Window {
+			dataLayer: any[];
+			fbq: any;
+			_fbq: any;
+		}
+		const Swal: any;
+	}
 </script>
 
 <style>
-	/* Comillas decorativas */
-	.quote-open,
-	.quote-close {
-		position: absolute;
-		width: 80px;
-		height: auto;
-		opacity: 0.6;
-		z-index: 0;
-		pointer-events: none;
-	}
 
-	.quote-open {
-		top: -20px;
-		left: -70px;
-	}
-
-	.quote-close {
-		top: -20px;
-		left: auto;
-		right: -10px;
-		transform: rotate(180deg);
-	}
-
-	.quote-close-inline {
-		display: inline-block;
-		width: 60px;
-		height: auto;
-		opacity: 0.6;
-		transform: rotate(180deg);
-		margin-left: 10px;
-		vertical-align: top;
-		margin-top: -10px;
-	}
-
-	@media (min-width: 640px) {
-		.quote-close {
-			right: 20px;
-		}
-
-		.quote-close-inline {
-			width: 80px;
-			margin-left: 15px;
-			margin-top: -15px;
-		}
-	}
 
 	@keyframes slideIn {
 		from {
