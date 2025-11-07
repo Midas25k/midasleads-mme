@@ -1,0 +1,315 @@
+---
+const { data_modal } = Astro.props;
+---
+
+<style>
+    /* Estilos personalizados para el scroll */
+    .overflow-y-auto {
+        scrollbar-width: thin;
+        scrollbar-color: #9ca3af #f3f4f6;
+    }
+
+    .overflow-y-auto::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .overflow-y-auto::-webkit-scrollbar-track {
+        background: #f3f4f6;
+        border-radius: 4px;
+    }
+
+    .overflow-y-auto::-webkit-scrollbar-thumb {
+        background: #9ca3af;
+        border-radius: 4px;
+    }
+
+    .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+        background: #6b7280;
+    }
+
+    /* Acordeón styles */
+    .accordion-content {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        display: block;
+    }
+
+    .accordion-content.open {
+        opacity: 1;
+    }
+
+    .accordion-inner {
+        display: block;
+    }
+</style>
+
+<modal-details data-modal={JSON.stringify(data_modal)}>
+    <div id={"modal-details-"+data_modal.id} class="hidden opacity-0 transition-opacity duration-200 fixed flex inset-0 bg-black bg-opacity-50 items-center justify-center z-50 p-4">
+        <div class="relative w-full max-w-3xl max-h-[90vh] flex flex-col bg-white rounded-lg shadow">
+            <!-- Header del Modal (fijo) -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-200 flex-shrink-0">
+                <h2 class="text-2xl font-bold text-gray-900">Detalles de la Tarifa</h2>
+                <button id={"close-modal-details-"+data_modal.id} type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Cerrar modal</span>
+                </button>
+            </div>
+
+            <!-- Contenido del Modal (con scroll) -->
+            <div class="overflow-y-auto flex-1 px-6 py-4" style="scrollbar-gutter: stable;">
+                <div class="space-y-4 pr-2">
+                    <!-- Sección 1: DETALLES DE LA TARIFA -->
+                    <div class="border-2 border-gray-300 rounded-lg overflow-hidden">
+                        <button
+                            id={"accordion-btn-1-"+data_modal.id}
+                            class="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors"
+                            type="button"
+                        >
+                            <h3 class="text-lg font-bold text-gray-900">
+                                DETALLES DE LA TARIFA
+                            </h3>
+                            <svg id={"accordion-icon-1-"+data_modal.id} class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id={"accordion-content-1-"+data_modal.id} class="accordion-content">
+                            <div id={"accordion-inner-1-"+data_modal.id} class="accordion-inner">
+                                <div class="p-4 space-y-3 text-gray-700 border-t border-gray-200">
+                                    <p class="leading-relaxed">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+                                    <p class="leading-relaxed">
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                    <ul class="list-disc list-inside space-y-2 pl-4">
+                                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                        <li>Sed do eiusmod tempor incididunt ut labore et dolore</li>
+                                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                                        <li>Duis aute irure dolor in reprehenderit in voluptate</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección 2: AMPLIA TU TARIFA CON ESTOS BONOS -->
+                    <div class="border-2 border-gray-300 rounded-lg overflow-hidden">
+                        <button
+                            id={"accordion-btn-2-"+data_modal.id}
+                            class="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors"
+                            type="button"
+                        >
+                            <h3 class="text-lg font-bold text-gray-900">
+                                AMPLIA TU TARIFA CON ESTOS BONOS
+                            </h3>
+                            <svg id={"accordion-icon-2-"+data_modal.id} class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id={"accordion-content-2-"+data_modal.id} class="accordion-content">
+                            <div id={"accordion-inner-2-"+data_modal.id} class="accordion-inner">
+                                <div class="p-4 space-y-3 text-gray-700 border-t border-gray-200">
+                                    <p class="leading-relaxed">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                                    </p>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                        <div class="bg-gray-50 p-3 rounded-lg">
+                                            <h4 class="font-bold text-gray-800 mb-2">Bono Extra 1</h4>
+                                            <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-3 rounded-lg">
+                                            <h4 class="font-bold text-gray-800 mb-2">Bono Extra 2</h4>
+                                            <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-3 rounded-lg">
+                                            <h4 class="font-bold text-gray-800 mb-2">Bono Extra 3</h4>
+                                            <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-3 rounded-lg">
+                                            <h4 class="font-bold text-gray-800 mb-2">Bono Extra 4</h4>
+                                            <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección 3: MULTISIM POR 3€ AL MES -->
+                    <div class="border-2 border-gray-300 rounded-lg overflow-hidden">
+                        <button
+                            id={"accordion-btn-3-"+data_modal.id}
+                            class="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors"
+                            type="button"
+                        >
+                            <h3 class="text-lg font-bold text-gray-900">
+                                MULTISIM POR 3€ AL MES
+                            </h3>
+                            <svg id={"accordion-icon-3-"+data_modal.id} class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id={"accordion-content-3-"+data_modal.id} class="accordion-content">
+                            <div id={"accordion-inner-3-"+data_modal.id} class="accordion-inner">
+                                <div class="p-4 space-y-3 text-gray-700 border-t border-gray-200">
+                                    <p class="leading-relaxed">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+                                    <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
+                                        <p class="text-sm font-semibold text-blue-900 mb-2">💡 Ventajas de MultiSIM</p>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-blue-800">
+                                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing</li>
+                                        <li>Sed do eiusmod tempor incididunt ut labore</li>
+                                        <li>Ut enim ad minim veniam, quis nostrud</li>
+                                        <li>Duis aute irure dolor in reprehenderit</li>
+                                    </ul>
+                                </div>
+                                    <p class="leading-relaxed">
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer del Modal (fijo) -->
+            <div class="border-t border-gray-200 p-4 bg-gray-50 flex justify-center flex-shrink-0">
+                <button id={"close-modal-details-footer-"+data_modal.id} class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg transition">
+                    CERRAR
+                </button>
+            </div>
+        </div>
+    </div>
+</modal-details>
+
+<script>
+    class ModalDetails extends HTMLElement {
+        constructor() {
+            super();
+
+            const data_modal = JSON.parse(this.dataset.modal);
+
+            const modal = document.getElementById('modal-details-'+data_modal.id);
+            const buttonModal = document.getElementById('button-details-'+data_modal.id);
+            const closeModal = document.getElementById('close-modal-details-'+data_modal.id);
+            const closeModalFooter = document.getElementById('close-modal-details-footer-'+data_modal.id);
+
+            // Función para toggle del acordeón
+            const setupAccordion = (sectionNumber) => {
+                const btn = document.getElementById(`accordion-btn-${sectionNumber}-${data_modal.id}`);
+                const content = document.getElementById(`accordion-content-${sectionNumber}-${data_modal.id}`);
+                const icon = document.getElementById(`accordion-icon-${sectionNumber}-${data_modal.id}`);
+
+                if (!btn || !content || !icon) {
+                    return;
+                }
+
+                let isAnimating = false;
+
+                // Remover listeners previos si existen
+                btn.onclick = null;
+
+                btn.onclick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    if (isAnimating) {
+                        return false;
+                    }
+
+                    const isOpen = content.classList.contains('open');
+                    isAnimating = true;
+
+                    if (isOpen) {
+                        // Cerrar
+                        content.style.maxHeight = '0px';
+                        content.style.opacity = '0';
+                        content.classList.remove('open');
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        // Abrir - medir el contenido interno
+                        const inner = document.getElementById(`accordion-inner-${sectionNumber}-${data_modal.id}`);
+                        const height = inner.scrollHeight;
+
+                        // Establecer la altura medida
+                        content.style.maxHeight = height + 'px';
+                        content.style.opacity = '1';
+                        content.classList.add('open');
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+
+                    // Permitir clicks después de la transición
+                    setTimeout(() => {
+                        isAnimating = false;
+                    }, 300);
+
+                    return false;
+                };
+            };
+
+            // Esperar a que el DOM esté listo
+            setTimeout(() => {
+                setupAccordion(1);
+                setupAccordion(2);
+                setupAccordion(3);
+            }, 50);
+
+            // Abrir modal
+            buttonModal.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modal.classList.add('opacity-100');
+                }, 10);
+            });
+
+            // Cerrar modal (X)
+            closeModal.addEventListener('click', () => {
+                setTimeout(() => {
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                    }, 200);
+                    modal.classList.remove('opacity-100');
+                    modal.classList.add('opacity-0');
+                    document.body.classList.remove('overflow-hidden');
+                }, 10);
+            });
+
+            // Cerrar modal (botón footer)
+            closeModalFooter.addEventListener('click', () => {
+                setTimeout(() => {
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                    }, 200);
+                    modal.classList.remove('opacity-100');
+                    modal.classList.add('opacity-0');
+                    document.body.classList.remove('overflow-hidden');
+                }, 10);
+            });
+
+            // Cerrar modal al hacer clic fuera
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    setTimeout(() => {
+                        setTimeout(() => {
+                            modal.classList.add('hidden');
+                        }, 200);
+                        modal.classList.remove('opacity-100');
+                        modal.classList.add('opacity-0');
+                        document.body.classList.remove('overflow-hidden');
+                    }, 10);
+                }
+            });
+        }
+    }
+  
+    customElements.define('modal-details', ModalDetails);
+</script>
+
