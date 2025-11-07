@@ -5,141 +5,575 @@ import Footer from '../components/Footer.astro';
 
 <Layout title="Política de Cookies">
 	<main>
-		<div class="flex flex-col mx-auto max-w-screen-2xl px-8 py-8 space-y-6">
-			<span class="text-3xl sm:text-4xl text-center">
-				Política de Cookies
-			</span>
+		<div class="flex flex-col mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8 py-8 space-y-6">
 
-			<span class="text-lg sm:text-xl">
-				Utilizamos Cookies propias y de terceros para mejorar nuestros servicios y mostrarle publicidad relacionada con sus preferencias mediante el análisis de sus hábitos de navegación. Si continua navegando, consideramos que acepta su uso. Puede obtener más información acerca de nuestra Política de Cookies accediendo al link del mismo nombre incluido en todas nuestras páginas de navegación o en el siguiente link: <a href="" class="font-medium hover:underline">Configurar Cookies</a>
-				
-				<ul class="list-decimal ps-8 pt-4">
-					<li>Podemos recabar información sobre su ordenador, incluido, en su caso, su dirección de IP, sistema operativo y tipo de navegador, para la administración del sistema. Se trata de datos estadísticos sobre cómo navegas por nuestro sitio Web.</li>
-					<li>Por la misma razón, podemos obtener información sobre su uso general en nuestra tienda mediante un archivo de cookies que se almacena en el disco duro de su ordenador. Las cookies contienen información que se transfiere al disco duro de su ordenador.</li>
-					<li>Las cookies nos ayudan a mejorar nuestro sitio Web y a prestar un servicio mejor y más personalizado. En concreto, nos permiten:
-						<ol class="list-decimal ps-8">
-							<li>Hacer una estimación sobre números y patrones de uso.</li>
-							<li>Almacenar información acerca de sus preferencias y personalizar nuestro sitio web de conformidad con sus intereses individuales.</li>
-							<li>Acelerar sus búsquedas.</li>
-							<li>Reconocerle cuando regrese de nuevo a nuestro sitio.</li>
-						</ol>
-					</li>
-					<li>Puede negarse a aceptar cookies activando la configuración en su navegador que permite rechazar las cookies. No obstante, si selecciona esta configuración, quizá no pueda acceder a determinadas partes del Sitio Web o no pueda aprovecharse de alguno de nuestros servicios. A menos que haya ajustado la configuración de su navegador de forma que rechace cookies, nuestro sistema producirá cookies cuando se conecte a nuestro sitio.</li>
-					<li>¿Cómo puedo desactivar las cookies?</li>
-					<li>La mayoría de los navegadores indican cómo configurar su navegador para que no acepte cookies, para que le notifique cada vez que reciba una nueva cookie, así como para desactivarlas completamente. Para controlar qué uso quiere que se haga de su información, puede configurar el navegador de su terminal en la forma que estime más conveniente para Vd. Le indicamos los siguientes enlaces, donde podrá encontrar más información sobre los diferentes navegadores:
-						<ol class="list-decimal ps-8">
-							<li>Chrome: <a href="https://www.google.es/intl/es/policies/technologies/managing/" class="font-medium hover:underline">https://www.google.es/intl/es/policies/technologies/managing/</a></li>
-							<li>Explorer: <a href="http://windows.microsoft.com/es-es/windows7/how-to-manage-cookies-ininternet-explorer-9" class="font-medium hover:underline">http://windows.microsoft.com/es-es/windows7/how-to-manage-cookies-ininternet-explorer-9</a></li>
-							<li>Firefox: <a href="http://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-que-lossitios-we" class="font-medium hover:underline">http://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-que-lossitios-we</a></li>
-							<li>Safari: <a href="http://support.apple.com/kb/ph5042" class="font-medium hover:underline">http://support.apple.com/kb/ph5042</a></li>
-							<li>Opera: <a href="http://www.opera.com/help/tutorials/security/privacy/" class="font-medium hover:underline">http://www.opera.com/help/tutorials/security/privacy/</a></li>
-						</ol>
-					</li>
+			<!-- Hero Section con Comillas y Imagen -->
+			<div class="bg-yellow-400 rounded-lg p-8 md:p-12 mb-8">
+				<div class="grid md:grid-cols-2 gap-8 items-center">
+					<!-- Columna Izquierda: Texto -->
+					<div class="relative px-8">
+						<!-- Comilla de Inicio -->
+						<img src="/img/quote.svg" alt="" class="quote-open" aria-hidden="true" />
+
+						<h1 class="font-bold text-3xl sm:text-4xl md:text-5xl text-black mb-4 relative z-10 inline-block pl-16">
+							POLÍTICA DE COOKIES
+							<!-- Comilla de Cierre -->
+							<img src="/img/quote.svg" alt="" class="quote-close-inline" aria-hidden="true" />
+						</h1>
+
+						<p class="text-base sm:text-lg text-gray-800 leading-relaxed mb-6 mt-4">
+							Solo utilizaremos cookies en tu dispositivo si nos das consentimientos para ello.
+							Puedes aceptar, rechazar o revisar tu consentimiento en cualquier momento a través
+							de nuestro panel de configuración de cookies
+						</p>
+
+						<div class="flex flex-row gap-3">
+							<button id="configure-cookies-btn" class="bg-white hover:bg-gray-100 text-gray-800 font-bold py-3 px-6 rounded-lg border-2 border-gray-300 transition whitespace-nowrap">
+								CONFIGURAR
+							</button>
+							<button id="exit-btn" class="bg-white hover:bg-gray-100 text-gray-800 font-bold py-3 px-6 rounded-lg border-2 border-gray-300 transition whitespace-nowrap">
+								SALIR
+							</button>
+						</div>
+					</div>
+
+					<!-- Columna Derecha: Imagen -->
+					<div class="flex justify-center items-center">
+						<img
+							src="/img/cookies-b8ef7ed9493f2171760eabfd0925222b.webp"
+							alt="Cookies"
+							class="w-64 h-auto"
+							loading="eager"
+						/>
+					</div>
+				</div>
+			</div>
+
+			<!-- Índice de Navegación -->
+			<nav class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+				<ul class="space-y-2 text-blue-600">
+					<li><a href="#quienes-somos" class="hover:underline">¿Quiénes somos?</a></li>
+					<li><a href="#que-son-cookies" class="hover:underline">¿Qué son las cookies?</a></li>
+					<li><a href="#informacion-consentimiento" class="hover:underline">Información y consentimiento</a></li>
+					<li><a href="#cookies-utilizamos" class="hover:underline">Cookies que utilizamos</a></li>
+					<li><a href="#cambiar-configuracion" class="hover:underline">¿Cómo cambiar la configuración de las cookies o revocar el consentimiento?</a></li>
 				</ul>
-			</span>
+			</nav>
 
-			<span class="text-lg sm:text-xl">
-				Si no desea ser rastreado por las cookies de Google Analytics, Google ha desarrollado un complemento para instalar en su navegador al que puede acceder en el siguiente enlace: <a href="http://goo.gl/up4ND" class="font-medium hover:underline">http://goo.gl/up4ND</a>
-			</span>
+			<!-- Sección 1: ¿Quiénes somos? -->
+			<section id="quienes-somos" class="space-y-2 mb-4">
+				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 border-b-2 border-gray-300 pb-2">
+					1. ¿Quiénes somos?
+				</h2>
+				<p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-4 p-6">
+					Esta Política de Cookies es aplicable a la página web accesible a través del Sitio Web
+					<a href="https://www.masmovil.es" class="text-blue-600 hover:underline">https://www.masmovil.es</a>,
+					la cual es titularidad de <strong>XFERA MÓVILES, S.A.U.</strong> (en adelante, "MásMóvil"),
+					con domicilio social en Avenida de la Vega, 1, Edificio Veganova 3, 28108, Alcobendas (Madrid),
+					provista de C.I.F. A-82528548 e inscrita en el Registro Mercantil de Madrid al Tomo 16.586,
+					Folio 181, Sección 8ª, Hoja M-282.676, Inscripción 1ª.
+				</p>
+			</section>
 
-			<span class="text-lg sm:text-xl">
-				A continuación puede ver el listado detallado de Cookies:
-			</span>
+			<!-- Sección 2: ¿Qué son las cookies? -->
+			<section id="que-son-cookies" class="space-y-2 mb-4">
+				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 border-b-2 border-gray-300 pb-2">
+					2. ¿Qué son las cookies?
+				</h2>
+				<p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-4 p-6">
+					Las cookies son archivos que se pueden descargar en su equipo a través de las páginas web.
+					Son herramientas que tienen un papel esencial para la prestación de numerosos servicios de
+					la sociedad de la información. Entre otros, permiten a una página web almacenar y recuperar
+					información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de
+					la información obtenida, se pueden utilizar para reconocer al usuario y mejorar el servicio ofrecido.
+				</p>
+			</section>
 
-			<span class="text-lg sm:text-xl">
-				<table class="border-collapse border border-slate-500">
-					<thead>
-						<tr>
-							<th class="border border-slate-700 p-2">COOKIE</th>
-							<th class="border border-slate-700 p-2">TIPO</th>
-							<th class="border border-slate-700 p-2">DURACIÓN</th>
-							<th class="border border-slate-700 p-2">DESCRIPCIÓN</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="border border-slate-700 p-2 text-center">Necesarias</td>
-						</tr>
-						<tr>
-							<td class="border border-slate-700 p-2">cookielawinfo-checkbox-analytics</td>
-							<td class="border border-slate-700 p-2">0</td>
-							<td class="border border-slate-700 p-2">1 year</td>
-							<td class="border border-slate-700 p-2">This cookie is set by GDPR Cookie Consent plugin. The purpose of this cookie is to check whether or not the user has given their consent to the usage of cookies under the category ‘Analytics’.</td>
-						</tr>
-						<tr>
-							<td class="border border-slate-700 p-2">cookielawinfo-checkbox-advertisement</td>
-							<td class="border border-slate-700 p-2">0</td>
-							<td class="border border-slate-700 p-2">1 year</td>
-							<td class="border border-slate-700 p-2">This cookie is set by GDPR Cookie Consent plugin. The purpose of this cookie is to check whether or not the user has given their consent to the usage of cookies under the category ‘Advertisement’.</td>
-						</tr>
-						<tr>
-							<td class="border border-slate-700 p-2">viewed_cookie_policy</td>
-							<td class="border border-slate-700 p-2">0</td>
-							<td class="border border-slate-700 p-2">1 hour</td>
-							<td class="border border-slate-700 p-2">The cookie is set by the GDPR Cookie Consent plugin and is used to store whether or not user has consented to the use of cookies. It does not store any personal data.</td>
-						</tr>
-						<tr>
-							<td class="border border-slate-700 p-2">cookielawinfo-checkbox-necessary</td>
-							<td class="border border-slate-700 p-2">0</td>
-							<td class="border border-slate-700 p-2">1 year</td>
-							<td class="border border-slate-700 p-2">This cookie is set by GDPR Cookie Consent plugin. The purpose of this cookie is to check whether or not the user has given the consent to the usage of cookies under the category ‘Necessary’.</td>
-						</tr>
-						<tr>
-							<td class="border border-slate-700 p-2">cookielawinfo-checkbox-non-necessary</td>
-							<td class="border border-slate-700 p-2">0</td>
-							<td class="border border-slate-700 p-2">1 year</td>
-							<td class="border border-slate-700 p-2">This cookie is set by GDPR Cookie Consent plugin. The purpose of this cookie is to check whether or not the user has given their consent to the usage of cookies under the category ‘Non-Necessary’.</td>
-						</tr>
-						<tr>
-							<td class="border border-slate-700 p-2 text-center">Analíticas</td>
-						</tr>
-						<tr>
-							<td class="border border-slate-700 p-2">_ga</td>
-							<td class="border border-slate-700 p-2">0</td>
-							<td class="border border-slate-700 p-2">2 years</td>
-							<td class="border border-slate-700 p-2">This cookie is installed by Google Analytics. The cookie is used to calculate visitor, session, camapign data and keep track of site usage for the site’s analytics report. The cookies store information anonymously and assigns a randoly generated number to identify unique visitors.</td>
-						</tr>
-						<tr>
-							<td class="border border-slate-700 p-2">_gid</td>
-							<td class="border border-slate-700 p-2">0</td>
-							<td class="border border-slate-700 p-2">1 day</td>
-							<td class="border border-slate-700 p-2">This cookie is installed by Google Analytics. The cookie is used to store information of how visitors use a website and helps in creating an analytics report of how the wbsite is doing. The data collected including the number visitors, the source where they have come from, and the pages viisted in an anonymous form.</td>
-						</tr>
-						<tr>
-							<td class="border border-slate-700 p-2">_gat</td>
-							<td class="border border-slate-700 p-2">0</td>
-							<td class="border border-slate-700 p-2">1 minute</td>
-							<td class="border border-slate-700 p-2">This cookies is installed by Google Universal Analytics to throttle the request rate to limit the colllection of data on high traffic sites.</td>
-						</tr>
-						<tr>
-							<td class="border border-slate-700 p-2 text-center">Publicidad</td>
-						</tr>
-						<tr>
-							<td class="border border-slate-700 p-2">_fbp</td>
-							<td class="border border-slate-700 p-2">0</td>
-							<td class="border border-slate-700 p-2">2 months</td>
-							<td class="border border-slate-700 p-2">This cookie is set by Facebook to deliver advertisement when they are on Facebook or a digital platform powered by Facebook advertising after visiting this website.</td>
-						</tr>
-						<tr>
-							<td class="border border-slate-700 p-2">fr</td>
-							<td class="border border-slate-700 p-2">1</td>
-							<td class="border border-slate-700 p-2">2 months</td>
-							<td class="border border-slate-700 p-2">The cookie is set by Facebook to show relevant advertisments to the users and measure and improve the advertisements. The cookie also tracks the behavior of the user across the web on sites that have Facebook pixel or Facebook social plugin.</td>
-						</tr>
-						<tr>
-							<td class="border border-slate-700 p-2">NID</td>
-							<td class="border border-slate-700 p-2">1</td>
-							<td class="border border-slate-700 p-2">6 months</td>
-							<td class="border border-slate-700 p-2">This cookie is used to a profile based on user’s interest and display personalized ads to the users.</td>
-						</tr>
-					</tbody>
-				</table>
-			</span>
+			<!-- Sección 3: Información y consentimiento -->
+			<section id="informacion-consentimiento" class="space-y-2 mb-4">
+				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 border-b-2 border-gray-300 pb-2">
+					3. Información y consentimiento
+				</h2>
+				<div class="p-6">
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-4">
+						En cumplimiento del artículo 22.2 de la LSSI y la LOPDGDD, le informamos que este sitio web
+						utiliza cookies propias y de terceros con las siguientes finalidades:
+					</p>
+					<ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-700">
+						<li><strong>Cookies técnicas:</strong> esenciales para el funcionamiento del sitio</li>
+						<li><strong>Cookies analíticas:</strong> para análisis estadístico anónimo</li>
+						<li><strong>Cookies de publicidad:</strong> para personalización de contenidos publicitarios</li>
+					</ul>
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed mt-4">
+						El consentimiento para cookies no técnicas se obtendrá de forma expresa y granular mediante
+						nuestro panel de configuración.
+					</p>
+				</div>
+			</section>
 
-			<span class="text-lg sm:text-xl">
-                Si desea salir y borrar las cookies siga el siguiente enlace: <a href="" class="font-medium hover:underline">Borrar cookies</a>
-            </span>
+			<!-- Panel de Configuración Granular -->
+			<section id="cookies-utilizamos" class="space-y-2 mb-4">
+				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 border-b-2 border-gray-300 pb-2">
+					4. Cookies que utilizamos
+				</h2>
+
+				<!-- Cookies Técnicas -->
+				<div class="p-6 mb-4">
+					<h3 class="font-bold text-lg sm:text-xl text-gray-800 mb-2">COOKIES TÉCNICAS (NECESARIAS)</h3>
+					<p class="text-sm sm:text-base text-gray-700 mb-1">
+						<span class="font-semibold">Siempre activas</span>
+					</p>
+					<p class="text-sm sm:text-base text-gray-700 mb-2">
+						<strong>Finalidad:</strong> Funcionalidad básica del sitio - No se pueden desactivar
+					</p>
+					<ul class="list-none pl-4 space-y-1 text-sm text-gray-600">
+						<li>Gestión de sesión de usuario</li>
+						<li>Seguridad y prevención de fraudes</li>
+						<li>Carrito de compra y procesos de contratación</li>
+					</ul>
+				</div>
+
+				<!-- Cookies Analíticas -->
+				<div class="p-6 mb-4">
+					<h3 class="font-bold text-lg sm:text-xl text-gray-800 mb-2">COOKIES ANALÍTICAS</h3>
+					<p class="text-sm sm:text-base text-gray-700 mb-2">
+						<strong>Finalidad:</strong> Análisis de tráfico y comportamiento anónimo
+					</p>
+					<ul class="list-none pl-4 space-y-1 text-sm text-gray-600">
+						<li>Google Analytics (_ga, _gid, _gat)</li>
+						<li>Estadísticas de uso y mejora de servicios</li>
+					</ul>
+				</div>
+
+				<!-- Cookies de Publicidad -->
+				<div class="p-6 mb-4">
+					<h3 class="font-bold text-lg sm:text-xl text-gray-800 mb-2">COOKIES DE PUBLICIDAD</h3>
+					<p class="text-sm sm:text-base text-gray-700 mb-2">
+						<strong>Finalidad:</strong> Publicidad personalizada en redes sociales y terceros
+					</p>
+					<ul class="list-none pl-4 space-y-1 text-sm text-gray-600">
+						<li>Facebook (_fbp, fr)</li>
+						<li>Google Ads (NID)</li>
+						<li>Remarketing y segmentación</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Sección 5: Tabla de Cookies Actualizada -->
+			<section class="mb-4">
+				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 mb-3 border-b-2 border-gray-300 pb-2">
+					5. Tabla de Cookies Actualizada - LOPDGDD Compliant
+				</h2>
+				<div class="overflow-x-auto">
+					<table class="border-collapse border border-slate-500 w-full text-sm sm:text-base">
+						<thead>
+							<tr>
+								<th class="border border-slate-700 p-2">Cookie</th>
+								<th class="border border-slate-700 p-2">Tipo</th>
+								<th class="border border-slate-700 p-2">Titular</th>
+								<th class="border border-slate-700 p-2">Finalidad</th>
+								<th class="border border-slate-700 p-2">Duración</th>
+								<th class="border border-slate-700 p-2">Base Legal</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="border border-slate-700 p-2 text-center font-semibold" colspan="6">Necesarias</td>
+							</tr>
+							<tr>
+								<td class="border border-slate-700 p-2">cookielawinfo-checkbox-*</td>
+								<td class="border border-slate-700 p-2">Técnica</td>
+								<td class="border border-slate-700 p-2">Propia</td>
+								<td class="border border-slate-700 p-2">Gestión consentimiento</td>
+								<td class="border border-slate-700 p-2">1 año</td>
+								<td class="border border-slate-700 p-2">Interés legítimo</td>
+							</tr>
+							<tr>
+								<td class="border border-slate-700 p-2">PHPSESSID</td>
+								<td class="border border-slate-700 p-2">Técnica</td>
+								<td class="border border-slate-700 p-2">Propia</td>
+								<td class="border border-slate-700 p-2">Sesión de usuario</td>
+								<td class="border border-slate-700 p-2">Sesión</td>
+								<td class="border border-slate-700 p-2">Ejecución contrato</td>
+							</tr>
+							<tr>
+								<td class="border border-slate-700 p-2 text-center font-semibold" colspan="6">Analíticas</td>
+							</tr>
+							<tr>
+								<td class="border border-slate-700 p-2">_ga</td>
+								<td class="border border-slate-700 p-2">Analítica</td>
+								<td class="border border-slate-700 p-2">Google</td>
+								<td class="border border-slate-700 p-2">Analytics anónimo</td>
+								<td class="border border-slate-700 p-2">2 años</td>
+								<td class="border border-slate-700 p-2">Consentimiento</td>
+							</tr>
+							<tr>
+								<td class="border border-slate-700 p-2">_gid</td>
+								<td class="border border-slate-700 p-2">Analítica</td>
+								<td class="border border-slate-700 p-2">Google</td>
+								<td class="border border-slate-700 p-2">Analytics sesión</td>
+								<td class="border border-slate-700 p-2">1 día</td>
+								<td class="border border-slate-700 p-2">Consentimiento</td>
+							</tr>
+							<tr>
+								<td class="border border-slate-700 p-2">_gat</td>
+								<td class="border border-slate-700 p-2">Analítica</td>
+								<td class="border border-slate-700 p-2">Google</td>
+								<td class="border border-slate-700 p-2">Limitación peticiones</td>
+								<td class="border border-slate-700 p-2">1 min</td>
+								<td class="border border-slate-700 p-2">Consentimiento</td>
+							</tr>
+							<tr>
+								<td class="border border-slate-700 p-2 text-center font-semibold" colspan="6">Publicidad</td>
+							</tr>
+							<tr>
+								<td class="border border-slate-700 p-2">_fbp</td>
+								<td class="border border-slate-700 p-2">Publicidad</td>
+								<td class="border border-slate-700 p-2">Meta</td>
+								<td class="border border-slate-700 p-2">Publicidad Facebook</td>
+								<td class="border border-slate-700 p-2">2 meses</td>
+								<td class="border border-slate-700 p-2">Consentimiento</td>
+							</tr>
+							<tr>
+								<td class="border border-slate-700 p-2">fr</td>
+								<td class="border border-slate-700 p-2">Publicidad</td>
+								<td class="border border-slate-700 p-2">Meta</td>
+								<td class="border border-slate-700 p-2">Publicidad y medición</td>
+								<td class="border border-slate-700 p-2">2 meses</td>
+								<td class="border border-slate-700 p-2">Consentimiento</td>
+							</tr>
+							<tr>
+								<td class="border border-slate-700 p-2">NID</td>
+								<td class="border border-slate-700 p-2">Publicidad</td>
+								<td class="border border-slate-700 p-2">Google</td>
+								<td class="border border-slate-700 p-2">Publicidad personalizada</td>
+								<td class="border border-slate-700 p-2">6 meses</td>
+								<td class="border border-slate-700 p-2">Consentimiento</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<!-- Sección 6: Gestión del Consentimiento -->
+			<section id="cambiar-configuracion" class="space-y-2 mb-4">
+				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 border-b-2 border-gray-300 pb-2">
+					6. ¿Cómo cambiar la configuración de las cookies o revocar el consentimiento?
+				</h2>
+				<div class="p-6">
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-4">
+						Puede gestionar sus preferencias en cualquier momento accediendo a nuestro
+						<strong>Panel de Configuración de Cookies</strong> disponible en esta página.
+					</p>
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-4">
+						El consentimiento tendrá una duración máxima de <strong>24 meses</strong>, tras los cuales se le solicitará
+						renovarlo. Puede revocar su consentimiento en cualquier momento mediante las opciones de
+						configuración o eliminando las cookies desde su navegador.
+					</p>
+					<div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-4">
+						<p class="text-sm sm:text-base text-gray-700">
+							<strong>⚠️ Importante:</strong> Si rechaza las cookies no técnicas, algunas funcionalidades del sitio
+							pueden verse limitadas.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Sección 7: Derechos del Usuario -->
+			<section class="space-y-2 mb-4">
+				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 border-b-2 border-gray-300 pb-2">
+					7. Derechos del Usuario
+				</h2>
+				<div class="p-6">
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-4">
+						De acuerdo con la LOPDGDD, tiene derecho a:
+					</p>
+					<ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-700">
+						<li><strong>Acceder</strong> a sus datos personales</li>
+						<li><strong>Rectificar</strong> datos inexactos</li>
+						<li><strong>Suprimir</strong> sus datos cuando ya no sean necesarios</li>
+						<li><strong>Oponerse</strong> al tratamiento para fines de marketing</li>
+						<li><strong>Portar</strong> sus datos a otro responsable</li>
+					</ul>
+					<p class="text-base sm:text-lg text-gray-700 leading-relaxed mt-4">
+						Para ejercer estos derechos, contacte con nuestro DPO:
+						<a href="mailto:dpo@empresa.com" class="text-blue-600 hover:underline font-semibold">dpo@empresa.com</a>
+					</p>
+				</div>
+			</section>
+
+			<!-- Sección 8: Configuración del Navegador -->
+			<section class="space-y-3">
+				<h2 class="font-bold text-2xl sm:text-3xl text-gray-800 border-b-2 border-gray-300 pb-2">
+					8. Cómo Desactivar las Cookies desde su Navegador
+				</h2>
+				<div class="p-4">
+					<p class="text-sm sm:text-base text-gray-700 mb-3">
+						La mayoría de los navegadores permiten configurar el uso de cookies. A continuación,
+						le indicamos los enlaces donde podrá encontrar más información:
+					</p>
+					<ul class="space-y-2 text-sm sm:text-base">
+						<li>
+							<strong>Chrome:</strong>
+							<a href="https://www.google.es/intl/es/policies/technologies/managing/"
+							   class="text-blue-600 hover:underline break-words"
+							   target="_blank"
+							   rel="noopener noreferrer">
+								https://www.google.es/intl/es/policies/technologies/managing/
+							</a>
+						</li>
+						<li>
+							<strong>Firefox:</strong>
+							<a href="http://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-que-lossitios-we"
+							   class="text-blue-600 hover:underline break-words"
+							   target="_blank"
+							   rel="noopener noreferrer">
+								http://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-que-lossitios-we
+							</a>
+						</li>
+						<li>
+							<strong>Safari:</strong>
+							<a href="http://support.apple.com/kb/ph5042"
+							   class="text-blue-600 hover:underline break-words"
+							   target="_blank"
+							   rel="noopener noreferrer">
+								http://support.apple.com/kb/ph5042
+							</a>
+						</li>
+						<li>
+							<strong>Edge:</strong>
+							<a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09"
+							   class="text-blue-600 hover:underline break-words"
+							   target="_blank"
+							   rel="noopener noreferrer">
+								https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies
+							</a>
+						</li>
+					</ul>
+					<div class="bg-blue-50 border-l-4 border-blue-500 p-3 mt-4">
+						<p class="text-sm sm:text-base text-gray-700">
+							<strong>Google Analytics:</strong> Si no desea ser rastreado por Google Analytics,
+							puede instalar el complemento de inhabilitación:
+							<a href="https://tools.google.com/dlpage/gaoptout"
+							   class="text-blue-600 hover:underline font-semibold"
+							   target="_blank"
+							   rel="noopener noreferrer">
+								https://tools.google.com/dlpage/gaoptout
+							</a>
+						</p>
+					</div>
+				</div>
+			</section>
 		</div>
 		<Footer/>
 	</main>
 </Layout>
+
+<script>
+	// Gestión de preferencias de cookies
+	interface CookiePreferences {
+		necessary: boolean;
+		analytics: boolean;
+		advertising: boolean;
+		timestamp: number;
+	}
+
+	// Función para crear cookies
+	function setCookie(name: string, value: string, days: number) {
+		const expires = new Date();
+		expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+		document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
+	}
+
+	// Función para leer cookies
+	function getCookie(name: string): string | null {
+		const nameEQ = name + "=";
+		const ca = document.cookie.split(';');
+		for (let i = 0; i < ca.length; i++) {
+			let c = ca[i];
+			while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+			if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+		}
+		return null;
+	}
+
+	// Función para guardar preferencias
+	function savePreferences(preferences: CookiePreferences) {
+		localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
+		setCookie('cookieConsent', 'configured', 730); // 24 meses
+
+		// Aplicar preferencias
+		if (preferences.analytics) {
+			loadAnalyticsCookies();
+		}
+		if (preferences.advertising) {
+			loadAdvertisingCookies();
+		}
+
+		showNotification('✅ Preferencias guardadas correctamente', 'success');
+	}
+
+	// Función para cargar cookies analíticas
+	function loadAnalyticsCookies() {
+		// Aquí se cargarían los scripts de Google Analytics
+		console.log('Google Analytics activado');
+		setCookie('_ga', 'GA1.2.' + Math.random(), 730);
+		setCookie('_gid', 'GA1.2.' + Math.random(), 1);
+	}
+
+	// Función para cargar cookies de publicidad
+	function loadAdvertisingCookies() {
+		// Aquí se cargarían los scripts de publicidad
+		console.log('Cookies de publicidad activadas');
+		setCookie('_fbp', 'fb.1.' + Date.now(), 60);
+		setCookie('NID', 'NID-' + Math.random(), 180);
+	}
+
+	// Función para mostrar notificaciones
+	function showNotification(message: string, type: 'success' | 'error') {
+		const notification = document.createElement('div');
+		notification.className = `fixed bottom-8 right-8 p-4 rounded-lg text-white shadow-2xl z-50 min-w-[300px] max-w-md ${
+			type === 'success' ? 'bg-green-600' : 'bg-red-600'
+		}`;
+		notification.style.cssText = 'animation: slideIn 0.3s ease-out;';
+
+		// Crear el contenido con mejor formato
+		const content = document.createElement('div');
+		content.className = 'flex items-center gap-3';
+
+		const icon = document.createElement('span');
+		icon.className = 'text-2xl';
+		icon.textContent = type === 'success' ? '✅' : '❌';
+
+		const text = document.createElement('span');
+		text.className = 'text-base font-medium';
+		text.textContent = message;
+
+		content.appendChild(icon);
+		content.appendChild(text);
+		notification.appendChild(content);
+
+		document.body.appendChild(notification);
+
+		setTimeout(() => {
+			notification.style.animation = 'slideOut 0.3s ease-in';
+			setTimeout(() => {
+				notification.remove();
+			}, 300);
+		}, 3000);
+	}
+
+	// Event Listeners
+	document.addEventListener('DOMContentLoaded', () => {
+		const acceptAllBtn = document.getElementById('accept-all-btn');
+		const rejectAllBtn = document.getElementById('reject-all-btn');
+		const configureCookiesBtn = document.getElementById('configure-cookies-btn');
+		const exitBtn = document.getElementById('exit-btn');
+
+		// Botón "CONFIGURAR COOKIES" - Scroll a la sección de cookies
+		configureCookiesBtn?.addEventListener('click', () => {
+			const cookiesSection = document.getElementById('cookies-utilizamos');
+			if (cookiesSection) {
+				cookiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			}
+		});
+
+		// Botón "SALIR" - Volver a la página principal
+		exitBtn?.addEventListener('click', () => {
+			window.location.href = '/';
+		});
+
+		// Aceptar todas las cookies
+		acceptAllBtn?.addEventListener('click', () => {
+			const preferences: CookiePreferences = {
+				necessary: true,
+				analytics: true,
+				advertising: true,
+				timestamp: Date.now()
+			};
+			savePreferences(preferences);
+		});
+
+		// Rechazar cookies no esenciales (solo mantener las necesarias)
+		rejectAllBtn?.addEventListener('click', () => {
+			const preferences: CookiePreferences = {
+				necessary: true,
+				analytics: false,
+				advertising: false,
+				timestamp: Date.now()
+			};
+			savePreferences(preferences);
+		});
+	});
+</script>
+
+<style>
+	/* Comillas decorativas */
+	.quote-open,
+	.quote-close {
+		position: absolute;
+		width: 80px;
+		height: auto;
+		opacity: 0.6;
+		z-index: 0;
+		pointer-events: none;
+	}
+
+	.quote-open {
+		top: -20px;
+		left: -70px;
+	}
+
+	.quote-close {
+		top: -20px;
+		left: auto;
+		right: -10px;
+		transform: rotate(180deg);
+	}
+
+	.quote-close-inline {
+		display: inline-block;
+		width: 60px;
+		height: auto;
+		opacity: 0.6;
+		transform: rotate(180deg);
+		margin-left: 10px;
+		vertical-align: top;
+		margin-top: -10px;
+	}
+
+	@media (min-width: 640px) {
+		.quote-close {
+			right: 20px;
+		}
+
+		.quote-close-inline {
+			width: 80px;
+			margin-left: 15px;
+			margin-top: -15px;
+		}
+	}
+
+	@keyframes slideIn {
+		from {
+			transform: translateX(400px);
+			opacity: 0;
+		}
+		to {
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes slideOut {
+		from {
+			transform: translateX(0);
+			opacity: 1;
+		}
+		to {
+			transform: translateX(400px);
+			opacity: 0;
+		}
+	}
+</style>
+

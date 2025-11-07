@@ -1,0 +1,422 @@
+<script>
+  import Swal from 'sweetalert2';
+
+  // Función para crear una cookie
+  function createCookie(name, value, days) {
+    let expires = '';
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = '; expires=' + date.toUTCString();
+    }
+    document.cookie = name + '=' + value + expires + '; path=/';
+  }
+
+  // Función para verificar si existe una cookie
+  function checkCookie(name) {
+    const nameEQ = name + '=';
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      const c = ca[i].trim();
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  // Función para crear las cookies de seguimiento
+  function createTrackingCookies() {
+    const additionalCookies = [
+      { name: '_ga', value: 'GA1.2.1234567890.1234567890', duration: 730 },
+      { name: '_gid', value: 'GA1.2.0987654321.0987654321', duration: 1 },
+      { name: '_gat', value: '1', duration: 1 / 1440 },
+      { name: '_fbp', value: 'fb.1.1234567890123.1234567890', duration: 60 },
+      { name: 'fr', value: 'facebook-value', duration: 60 },
+      { name: 'NID', value: 'NID-value', duration: 180 },
+    ];
+
+    additionalCookies.forEach((cookie) => {
+      createCookie(cookie.name, cookie.value, cookie.duration);
+    });
+  }
+
+  // Mostrar el Sweet Alert al cargar la página
+  window.addEventListener('load', function () {
+    const cookieConsent = checkCookie('cookieConsent');
+
+    if (cookieConsent !== 'accepted' && cookieConsent !== 'rejected') {
+      Swal.fire({
+        title: '',
+        html: `
+          <div class="cookie-modal-container">
+            <!-- Contenedor superior: Imagen + Texto -->
+            <div class="cookie-content">
+              <!-- Columna izquierda: Imagen -->
+              <div class="cookie-image">
+                <img src="/img/D-masmovil-cookies-img.jpg" alt="Cookies">
+              </div>
+              <!-- Columna derecha: Texto -->
+              <div class="cookie-text">
+                <h2>NUESTRAS COOKIES</h2>
+                <p class="cookie-description">Usamos cookies propias y de terceros para analizar cómo utilizas este sitio web y personalizar los contenidos y anuncios que te mostramos en base a tus hábitos de navegación (páginas visitadas, frecuencia de acceso, etc)</p>
+                <p class="cookie-policy">Si quieres saber más, echa un vistazo a nuestra <a href="/politica-de-cookies" target="_blank">Política de cookies</a></p>
+              </div>
+            </div>
+
+            <!-- Línea separadora en todo el ancho -->
+            <div class="cookie-divider"></div>
+
+            <!-- Contenedor de todos los botones: CONFIGURAR (izquierda) + RECHAZAR y ACEPTAR (derecha) -->
+            <div class="cookie-buttons">
+              <!-- Botón CONFIGURAR a la izquierda (mismo ancho que la imagen) -->
+              <div id="config-button-container" class="config-btn-wrapper"></div>
+              <!-- Botones RECHAZAR y ACEPTAR a la derecha -->
+              <div id="actions-button-container" class="actions-btn-wrapper"></div>
+            </div>
+          </div>
+        `,
+        showCancelButton: false,
+        showDenyButton: true,
+        confirmButtonText: 'ACEPTAR',
+        denyButtonText: 'RECHAZAR',
+        width: '750px',
+        padding: '0px',
+        backdrop: true,
+        position: 'top',
+        customClass: {
+          popup: 'cookie-popup',
+          actions: 'cookie-actions'
+        },
+        didOpen: (modal) => {
+          // Posicionar según el tamaño de pantalla
+          const isMobile = window.innerWidth <= 768;
+          modal.style.marginTop = isMobile ? '20px' : '80px';
+          modal.style.borderRadius = '8px';
+          modal.style.overflow = 'hidden';
+
+          // Oscurecer el fondo
+          const backdrop = document.querySelector('.swal2-backdrop-show');
+          if (backdrop) {
+            backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+          }
+
+          // Obtener el footer original
+          const footer = modal.querySelector('.swal2-actions');
+
+          // Obtener botones existentes ANTES de ocultar el footer
+          const denyBtn = footer?.querySelector('.swal2-deny');
+          const confirmBtn = footer?.querySelector('.swal2-confirm');
+
+          console.log('Botones encontrados:', { denyBtn, confirmBtn });
+
+          // Ahora sí ocultar el footer
+          if (footer) footer.style.display = 'none';
+
+          // Obtener los contenedores personalizados del HTML
+          const configButtonContainer = modal.querySelector('#config-button-container');
+          const actionsButtonContainer = modal.querySelector('#actions-button-container');
+
+          // BOTÓN CONFIGURAR (va en la columna izquierda, debajo de la imagen)
+          const configBtn = document.createElement('button');
+          configBtn.className = 'swal2-confirm swal2-styled';
+          configBtn.textContent = 'CONFIGURAR';
+          configBtn.style.backgroundColor = '#43aa00';
+          configBtn.style.color = 'white';
+          configBtn.style.border = 'none';
+          configBtn.style.borderRadius = '0';
+          configBtn.style.padding = '12px 0';
+          configBtn.style.cursor = 'pointer';
+          configBtn.style.fontWeight = '700';
+          configBtn.style.fontSize = '13px';
+          configBtn.style.textTransform = 'uppercase';
+          configBtn.style.margin = '0';
+          configBtn.style.letterSpacing = '0.3px';
+          configBtn.style.width = '100%';
+          configBtn.style.height = '100%';
+          configBtn.onclick = () => {
+            createCookie('cookieConsent', 'configured', 365);
+            Swal.close();
+            console.log('Cookies configuradas');
+          };
+
+          configButtonContainer.appendChild(configBtn);
+
+          // CONTENEDOR para RECHAZAR y ACEPTAR (va en la columna derecha, debajo del texto)
+          const actionsContainer = document.createElement('div');
+          actionsContainer.className = 'cookie-action-buttons';
+          actionsContainer.style.display = 'flex';
+          actionsContainer.style.justifyContent = 'flex-start';
+          actionsContainer.style.gap = '12px';
+          actionsContainer.style.width = '100%';
+          actionsContainer.style.paddingLeft = '30px';
+
+          // Estilizar botón RECHAZAR
+          if (denyBtn) {
+            denyBtn.style.backgroundColor = '#43aa00';
+            denyBtn.style.color = 'white';
+            denyBtn.style.border = 'none';
+            denyBtn.style.borderRadius = '3px';
+            denyBtn.style.padding = '12px 28px';
+            denyBtn.style.fontWeight = '700';
+            denyBtn.style.fontSize = '13px';
+            denyBtn.style.textTransform = 'uppercase';
+            denyBtn.style.margin = '0';
+            denyBtn.style.letterSpacing = '0.3px';
+          }
+
+          // Estilizar botón ACEPTAR
+          if (confirmBtn) {
+            confirmBtn.style.backgroundColor = '#43aa00';
+            confirmBtn.style.color = 'white';
+            confirmBtn.style.border = 'none';
+            confirmBtn.style.borderRadius = '3px';
+            confirmBtn.style.padding = '12px 28px';
+            confirmBtn.style.fontWeight = '700';
+            confirmBtn.style.fontSize = '13px';
+            confirmBtn.style.textTransform = 'uppercase';
+            confirmBtn.style.margin = '0 0 0 auto';
+            confirmBtn.style.letterSpacing = '0.3px';
+          }
+
+          // Agregar botones al contenedor de acciones
+          if (denyBtn) actionsContainer.appendChild(denyBtn);
+          if (confirmBtn) actionsContainer.appendChild(confirmBtn);
+
+          // Agregar el contenedor de acciones
+          actionsButtonContainer.appendChild(actionsContainer);
+        },
+        confirmButtonColor: '#43aa00',
+        denyButtonColor: '#43aa00',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Usuario aceptó las cookies
+          createCookie('cookieConsent', 'accepted', 365);
+          createTrackingCookies();
+          console.log('Cookies aceptadas');
+        } else if (result.isDenied) {
+          // Usuario rechazó las cookies
+          createCookie('cookieConsent', 'rejected', 365);
+          console.log('Cookies rechazadas');
+        }
+      });
+    }
+  });
+</script>
+
+<style is:global>
+  /* Estilos base del modal */
+  .cookie-modal-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 750px;
+  }
+
+  .cookie-content {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    text-align: left;
+  }
+
+  .cookie-image {
+    width: 220px;
+    flex-shrink: 0;
+  }
+
+  .cookie-image img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cookie-text {
+    padding: 0 0 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    background: white;
+  }
+
+  .cookie-text h2 {
+    margin: 0 0 16px 0;
+    font-size: 20px;
+    font-weight: 900;
+    color: #000000;
+    letter-spacing: 0.5px;
+  }
+
+  .cookie-description {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #333;
+  }
+
+  .cookie-policy {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #333;
+  }
+
+  .cookie-policy a {
+    color: #43aa00;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  .cookie-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 20px 0;
+  }
+
+  .cookie-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 30px 0;
+  }
+
+  .config-btn-wrapper {
+    width: 220px;
+    flex-shrink: 0;
+  }
+
+  .actions-btn-wrapper {
+    flex: 1;
+  }
+
+  .cookie-action-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding-left: 30px;
+  }
+
+  /* Ajustes generales para botones */
+  .swal2-styled {
+    min-height: 44px;
+  }
+
+  /* Media queries para responsividad */
+  @media (max-width: 768px) {
+    .swal2-popup.cookie-popup {
+      width: 90% !important;
+      max-width: 500px !important;
+      margin: 20px auto !important;
+    }
+
+    .cookie-content {
+      flex-direction: column;
+    }
+
+    .cookie-image {
+      width: 100%;
+    }
+
+    .cookie-image img {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: cover;
+    }
+
+    .cookie-text {
+      padding: 25px 20px 20px 20px;
+    }
+
+    .cookie-text h2 {
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+
+    .cookie-description,
+    .cookie-policy {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .cookie-divider {
+      margin: 20px 20px;
+    }
+
+    .cookie-buttons {
+      flex-direction: column;
+      gap: 12px;
+      padding: 0 20px 25px 20px;
+      align-items: stretch;
+    }
+
+    .config-btn-wrapper {
+      width: 100%;
+    }
+
+    .actions-btn-wrapper {
+      width: 100%;
+    }
+
+    .cookie-action-buttons {
+      padding-left: 0 !important;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cookie-action-buttons button {
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 14px 0 !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .swal2-popup.cookie-popup {
+      width: 95% !important;
+      max-width: 95% !important;
+      margin: 15px auto !important;
+    }
+
+    .cookie-image img {
+      max-height: 200px;
+    }
+
+    .cookie-text {
+      padding: 20px 15px 15px 15px;
+    }
+
+    .cookie-text h2 {
+      font-size: 17px;
+      margin-bottom: 12px;
+    }
+
+    .cookie-description,
+    .cookie-policy {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .cookie-divider {
+      margin: 15px 15px;
+    }
+
+    .cookie-buttons {
+      padding: 0 15px 20px 15px;
+      gap: 10px;
+    }
+
+    .cookie-action-buttons {
+      gap: 10px;
+    }
+
+    .cookie-action-buttons button {
+      padding: 13px 0 !important;
+      font-size: 12px !important;
+    }
+  }
+</style>
